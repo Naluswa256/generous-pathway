@@ -9,7 +9,8 @@ import { QuickLinksSection } from "@/components/quick-links-section";
 import { GallerySection } from "@/components/gallery-section";
 import { AboutSICSection } from "@/components/about-sic-section";
 import { CTAButton } from "@/components/ui/cta-button";
-import { DonationTracker } from "@/components/donation-tracker";
+import { LatestNewsSection } from "@/components/latest-news-section";
+import { TrusteesSection } from "@/components/trustees-section";
 
 const Index = () => {
   return (
@@ -34,23 +35,9 @@ const Index = () => {
         
         <GallerySection />
         
-        <section className="section">
-          <div className="container mx-auto">
-            <div className="max-w-4xl mx-auto">
-              <div className="animate-fade-in">
-                <DonationTracker 
-                  currentAmount={15000} 
-                  goalAmount={50000} 
-                  donorsCount={237}
-                  daysLeft={45}
-                />
-                <div className="mt-8 text-center">
-                  <CTAButton size="lg">Donate Now</CTAButton>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <LatestNewsSection />
+        
+        <TrusteesSection />
         
         <TestimonialSection />
         

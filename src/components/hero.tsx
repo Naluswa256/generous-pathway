@@ -15,7 +15,11 @@ export function Hero({ title, subtitle, imageUrl, className, showOverlay = false
   const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
-    setIsLoaded(true);
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 300);
+    
+    return () => clearTimeout(timer);
   }, []);
   
   return (
@@ -31,14 +35,16 @@ export function Hero({ title, subtitle, imageUrl, className, showOverlay = false
         style={{ backgroundImage: `url(${imageUrl})` }}
       />
       
-      {/* Animated overlay image */}
+      {/* Animated overlay image with improved animation */}
       <div className={cn(
-        "absolute z-20 top-0 left-1/2 -translate-x-1/2 w-full max-w-xs md:max-w-md transition-all duration-1000 transform",
-        isLoaded ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        "absolute z-20 top-0 left-1/2 -translate-x-1/2 w-full max-w-xs md:max-w-md transition-all duration-1000 ease-out",
+        isLoaded 
+          ? "translate-y-0 opacity-100" 
+          : "-translate-y-full opacity-0"
       )}>
         <img 
-          src="https://images.unsplash.com/photo-1540479859555-17af45c78602?q=80&w=2070&auto=format&fit=crop" 
-          alt="African child at water borehole"
+          src="https://images.unsplash.com/photo-1548867476-3c764abbc55d?q=80&w=1974&auto=format&fit=crop" 
+          alt="Ugandan child playing with water"
           className="w-full h-auto rounded-b-3xl shadow-2xl"
         />
       </div>
