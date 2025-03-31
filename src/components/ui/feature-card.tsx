@@ -9,6 +9,7 @@ interface FeatureCardProps {
   className?: string;
   accentColor?: string;
   iconColor?: string;
+  animate?: boolean;
 }
 
 export function FeatureCard({ 
@@ -17,12 +18,14 @@ export function FeatureCard({
   icon: Icon, 
   className,
   accentColor = "bg-charity-blue/10",
-  iconColor = "text-charity-blue"
+  iconColor = "text-charity-blue",
+  animate = false
 }: FeatureCardProps) {
   return (
     <div
       className={cn(
         "flex flex-col p-6 rounded-xl bg-white border border-border shadow-sm card-hover",
+        animate && "animate-fade-in",
         className
       )}
     >

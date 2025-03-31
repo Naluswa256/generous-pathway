@@ -1,6 +1,7 @@
 
 import { CTAButton } from "@/components/ui/cta-button";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 interface HeroProps {
   title: string;
@@ -11,8 +12,14 @@ interface HeroProps {
 }
 
 export function Hero({ title, subtitle, imageUrl, className, showOverlay = false }: HeroProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+  
   return (
-    <div className={cn("relative w-full", className)}>
+    <div className={cn("relative w-full overflow-hidden", className)}>
       <div className={cn(
         "absolute inset-0 z-10",
         showOverlay 
@@ -23,9 +30,22 @@ export function Hero({ title, subtitle, imageUrl, className, showOverlay = false
         className="h-[650px] bg-cover bg-center"
         style={{ backgroundImage: `url(${imageUrl})` }}
       />
-      <div className="absolute inset-0 z-20 flex items-center">
+      
+      {/* Animated overlay image */}
+      <div className={cn(
+        "absolute z-20 top-0 left-1/2 -translate-x-1/2 w-full max-w-xs md:max-w-md transition-all duration-1000 transform",
+        isLoaded ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      )}>
+        <img 
+          src="https://images.unsplash.com/photo-1540479859555-17af45c78602?q=80&w=2070&auto=format&fit=crop" 
+          alt="African child at water borehole"
+          className="w-full h-auto rounded-b-3xl shadow-2xl"
+        />
+      </div>
+      
+      <div className="absolute inset-0 z-30 flex items-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl animate-fade-in">
+          <div className="max-w-2xl mt-32 md:mt-48 animate-fade-in">
             <h1 className="text-white font-bold mb-4 md:text-5xl lg:text-6xl">{title}</h1>
             <p className="text-white/90 text-xl mb-8">{subtitle}</p>
             <div className="flex flex-wrap gap-4">
