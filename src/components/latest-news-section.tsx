@@ -3,6 +3,7 @@ import { useState } from "react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Calendar, Clock } from "lucide-react";
+import { useEffect } from "react";
 
 interface NewsItem {
   id: number;
@@ -59,9 +60,13 @@ export function LatestNewsSection() {
         <div className="mt-12 max-w-5xl mx-auto">
           <Carousel 
             className="w-full"
-            onSelect={(api) => {
+            opts={{
+              align: "start",
+            }}
+            onScroll={(api) => {
               if (api) {
-                setActiveSlide(api.selectedScrollSnap());
+                const slide = Math.round(api.scrollProgress() * (newsItems.length - 1));
+                setActiveSlide(slide);
               }
             }}
           >
