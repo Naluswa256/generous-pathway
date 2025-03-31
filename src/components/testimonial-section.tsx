@@ -35,32 +35,32 @@ function Testimonial({ quote, name, role, imageUrl, className }: TestimonialProp
 
 export function TestimonialSection() {
   return (
-    <section className="section bg-muted">
+    <section className="section">
       <div className="container mx-auto">
         <SectionTitle 
-          title="Stories of Change" 
-          subtitle="Hear from those whose lives have been impacted by our work"
+          title="Real Stories of Change" 
+          subtitle="Hear from the people whose lives have been transformed by your support"
           centered={true}
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           <Testimonial 
-            quote="SIC's education program gave me the skills I needed to secure a job and support my family. I'm forever grateful for their support."
-            name="Sarah Johnson"
-            role="Program Beneficiary"
-            imageUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop"
+            quote="Before the program, I had no hope for education. Now I am in school and dreaming of becoming a doctor to help others in my village."
+            name="Esther Nakato"
+            role="Orphan Program Beneficiary"
+            imageUrl="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=150&auto=format&fit=crop"
           />
           <Testimonial 
-            quote="Volunteering with SIC has been the most rewarding experience. The impact we're making in communities is truly life-changing."
-            name="David Chen"
-            role="Volunteer"
+            quote="The wheelchair and vocational training changed everything. I can now move independently and earn an income as a tailor to support my family."
+            name="David Mutumba"
+            role="Disability Support Program"
             imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop"
           />
           <Testimonial 
-            quote="The community development project transformed our village. We now have clean water and better infrastructure thanks to SIC."
-            name="Maria Rodriguez"
-            role="Community Leader"
-            imageUrl="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?q=80&w=150&auto=format&fit=crop"
+            quote="At my age, raising six grandchildren seemed impossible after losing my daughter. The monthly food support and school fees assistance has been life-saving."
+            name="Sarah Namukasa"
+            role="Elderly Support Program"
+            imageUrl="https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?q=80&w=150&auto=format&fit=crop"
           />
         </div>
       </div>

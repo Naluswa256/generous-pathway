@@ -7,9 +7,18 @@ interface FeatureCardProps {
   description: string;
   icon: LucideIcon;
   className?: string;
+  accentColor?: string;
+  iconColor?: string;
 }
 
-export function FeatureCard({ title, description, icon: Icon, className }: FeatureCardProps) {
+export function FeatureCard({ 
+  title, 
+  description, 
+  icon: Icon, 
+  className,
+  accentColor = "bg-charity-blue/10",
+  iconColor = "text-charity-blue"
+}: FeatureCardProps) {
   return (
     <div
       className={cn(
@@ -17,8 +26,8 @@ export function FeatureCard({ title, description, icon: Icon, className }: Featu
         className
       )}
     >
-      <div className="mb-4 p-3 rounded-full bg-charity-blue/10 w-fit">
-        <Icon className="w-6 h-6 text-charity-blue" />
+      <div className={cn("mb-4 p-3 rounded-full w-fit", accentColor)}>
+        <Icon className={cn("w-6 h-6", iconColor)} />
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-muted-foreground">{description}</p>
