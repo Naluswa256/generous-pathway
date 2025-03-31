@@ -57,33 +57,34 @@ export function LatestNewsSection() {
           animate
         />
         
-        <div className="mt-12 max-w-5xl mx-auto">
+        <div className="mt-12 max-w-5xl mx-auto animate-fade-in">
           <Carousel 
             className="w-full"
             opts={{
               align: "start",
             }}
-            onScroll={(api) => {
+            setApi={(api) => {
               if (api) {
-                const slide = Math.round(api.scrollProgress() * (newsItems.length - 1));
-                setActiveSlide(slide);
+                api.on("select", () => {
+                  setActiveSlide(api.selectedScrollSnap());
+                });
               }
             }}
           >
             <CarouselContent>
               {newsItems.map((news) => (
-                <CarouselItem key={news.id}>
+                <CarouselItem key={news.id} className="transition-all duration-300 hover:scale-[1.02]">
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                     <div className="md:flex">
                       <div className="md:w-2/5">
                         <img 
                           src={news.image} 
                           alt={news.title}
-                          className="h-64 w-full object-cover"
+                          className="h-64 w-full object-cover transition-transform duration-700 hover:scale-110"
                         />
                       </div>
                       <div className="p-6 md:w-3/5">
-                        <h3 className="text-xl font-bold mb-2">{news.title}</h3>
+                        <h3 className="text-xl font-bold mb-2 transition-colors duration-300 hover:text-charity-blue">{news.title}</h3>
                         <div className="flex items-center text-muted-foreground mb-4 text-sm">
                           <Calendar className="h-4 w-4 mr-1" />
                           <span>{news.date}</span>
@@ -91,10 +92,10 @@ export function LatestNewsSection() {
                         <p className="mb-4">{news.summary}</p>
                         <a 
                           href="/news" 
-                          className="inline-flex items-center text-charity-blue hover:text-charity-blue/80"
+                          className="inline-flex items-center text-charity-blue hover:text-charity-blue/80 transition-all duration-300 group"
                         >
                           Read full story
-                          <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                           </svg>
                         </a>
@@ -108,8 +109,8 @@ export function LatestNewsSection() {
               {newsItems.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    activeSlide === index ? "bg-charity-blue w-6" : "bg-gray-300"
+                  className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                    activeSlide === index ? "bg-charity-blue w-6" : "bg-gray-300 hover:bg-gray-400"
                   }`}
                   onClick={() => {
                     // This will be handled by the carousel's API
@@ -118,8 +119,8 @@ export function LatestNewsSection() {
                 />
               ))}
             </div>
-            <CarouselPrevious className="left-2 lg:-left-12" />
-            <CarouselNext className="right-2 lg:-right-12" />
+            <CarouselPrevious className="left-2 lg:-left-12 transition-transform duration-300 hover:scale-110" />
+            <CarouselNext className="right-2 lg:-right-12 transition-transform duration-300 hover:scale-110" />
           </Carousel>
         </div>
       </div>

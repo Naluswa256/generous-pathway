@@ -13,10 +13,15 @@ interface HeroProps {
 
 export function Hero({ title, subtitle, imageUrl, className, showOverlay = false }: HeroProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isTextLoaded, setIsTextLoaded] = useState(false);
   
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
+      
+      setTimeout(() => {
+        setIsTextLoaded(true);
+      }, 400);
     }, 300);
     
     return () => clearTimeout(timer);
@@ -25,14 +30,18 @@ export function Hero({ title, subtitle, imageUrl, className, showOverlay = false
   return (
     <div className={cn("relative w-full overflow-hidden", className)}>
       <div className={cn(
-        "absolute inset-0 z-10",
+        "absolute inset-0 z-10 transition-opacity duration-1000",
+        isLoaded ? "opacity-100" : "opacity-0",
         showOverlay 
           ? "bg-gradient-to-r from-charity-dark/90 to-charity-dark/70" 
           : "bg-gradient-to-r from-charity-dark/80 to-charity-dark/40"
       )} />
       <div 
-        className="h-[650px] bg-cover bg-center"
-        style={{ backgroundImage: `url(${imageUrl})` }}
+        className="h-[650px] bg-cover bg-center transition-transform duration-1500 ease-out"
+        style={{ 
+          backgroundImage: `url(${imageUrl})`,
+          transform: isLoaded ? "scale(1)" : "scale(1.05)" 
+        }}
       />
       
       {/* Animated overlay image with improved animation */}
@@ -51,12 +60,17 @@ export function Hero({ title, subtitle, imageUrl, className, showOverlay = false
       
       <div className="absolute inset-0 z-30 flex items-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mt-32 md:mt-48 animate-fade-in">
+          <div className={cn(
+            "max-w-2xl mt-32 md:mt-48 transition-all duration-1000 ease-out",
+            isTextLoaded 
+              ? "translate-y-0 opacity-100" 
+              : "translate-y-10 opacity-0"
+          )}>
             <h1 className="text-white font-bold mb-4 md:text-5xl lg:text-6xl">{title}</h1>
             <p className="text-white/90 text-xl mb-8">{subtitle}</p>
             <div className="flex flex-wrap gap-4">
-              <CTAButton size="lg" className="bg-charity-gold hover:bg-amber-600">Make a Difference Today</CTAButton>
-              <CTAButton size="lg" variant="secondary" className="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/50">Learn More</CTAButton>
+              <CTAButton size="lg" className="bg-charity-gold hover:bg-amber-600 transition-all duration-300 hover:scale-105">Make a Difference Today</CTAButton>
+              <CTAButton size="lg" variant="secondary" className="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/50 transition-all duration-300 hover:scale-105">Learn More</CTAButton>
             </div>
           </div>
         </div>
