@@ -2,6 +2,11 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SectionTitle } from "@/components/ui/section-title";
+import { CTAButton } from "@/components/ui/cta-button";
+import { AboutHero } from "@/components/about/about-hero";
+import { OurStory } from "@/components/about/our-story";
+import { OurMission } from "@/components/about/our-mission";
+import { AmbassadorsTrustees } from "@/components/about/ambassadors-trustees";
 
 const About = () => {
   return (
@@ -9,15 +14,10 @@ const About = () => {
       <Navbar />
       
       <main className="flex-grow">
-        <div className="container mx-auto py-16">
-          <SectionTitle 
-            title="About Us" 
-            subtitle="Learn more about our mission and impact"
-          />
-          <p className="text-muted-foreground">
-            This page is under development. Please check back later for more information about SIC.
-          </p>
-        </div>
+        <AboutHero />
+        <OurStory />
+        <OurMission />
+        <AmbassadorsTrustees />
       </main>
       
       <Footer />
