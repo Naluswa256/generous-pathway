@@ -11,6 +11,7 @@ import { AboutSICSection } from "@/components/about-sic-section";
 import { CTAButton } from "@/components/ui/cta-button";
 import { LatestNewsSection } from "@/components/latest-news-section";
 import { TrusteesSection } from "@/components/trustees-section";
+import { DonateSection } from "@/components/donate-section";
 import { useEffect, useState } from "react";
 
 const Index = () => {
@@ -48,6 +49,8 @@ const Index = () => {
         <LatestNewsSection />
         
         <TrusteesSection />
+        
+        <DonateSection />
         
         <TestimonialSection />
         

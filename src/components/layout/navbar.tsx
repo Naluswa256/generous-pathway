@@ -43,9 +43,10 @@ export function Navbar() {
           <nav className="hidden md:flex items-center space-x-1">
             <NavLink href="/" active>Home</NavLink>
             <NavLink href="/about">About Us</NavLink>
-            <NavLink href="/events">Events</NavLink>
-            <NavLink href="/blog">Blog</NavLink>
-            <NavLink href="/contact">Contact</NavLink>
+            <NavLink href="/blog">Blogs</NavLink>
+            <NavLink href="/events">Upcoming Events</NavLink>
+            <NavLink href="/contact">Connect With Us</NavLink>
+            <NavLink href="/donate">Your Donation</NavLink>
           </nav>
         </div>
 
@@ -69,9 +70,10 @@ export function Navbar() {
           <div className="container mx-auto py-4 flex flex-col space-y-3">
             <NavLink href="/" active>Home</NavLink>
             <NavLink href="/about">About Us</NavLink>
-            <NavLink href="/events">Events</NavLink>
-            <NavLink href="/blog">Blog</NavLink>
-            <NavLink href="/contact">Contact</NavLink>
+            <NavLink href="/blog">Blogs</NavLink>
+            <NavLink href="/events">Upcoming Events</NavLink>
+            <NavLink href="/contact">Connect With Us</NavLink>
+            <NavLink href="/donate">Your Donation</NavLink>
             <div className="pt-2">
               <CTAButton className="w-full justify-center">Donate Now</CTAButton>
             </div>
