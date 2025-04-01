@@ -1,3 +1,4 @@
+
 import React from "react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Input } from "@/components/ui/input";
@@ -92,6 +93,18 @@ export function DonateSection() {
                 <path d="M16.4 10.1c0 1.8-1.6 3.5-4 3.5l-.5-2.3c.3.1.6.2.9.2.8 0 1.3-.3 1.7-1.1l-1.3-3.4h1.9l.7 2.6.7-2.6h1.7l-1.8 3.1z" fill="#00579f" />
               </svg>
             )} />
+          </div>
+          
+          {/* Adding a prominent donate button */}
+          <div className="flex justify-center mt-8 mb-8 animate-bounce-slow">
+            <Button 
+              onClick={() => window.open("#", "_blank")} 
+              className="bg-charity-gold hover:bg-amber-600 text-white font-bold text-lg py-6 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 flex items-center gap-3"
+              aria-label="Start donation process"
+            >
+              <DollarSign className="w-6 h-6" />
+              Donate Now
+            </Button>
           </div>
         </div>
         
@@ -193,7 +206,7 @@ export function DonateSection() {
               
               <Button 
                 type="submit" 
-                className="w-full bg-charity-gold hover:bg-amber-600 text-white font-medium py-2 px-4 rounded-md transition-all duration-200 hover:scale-105 flex items-center justify-center"
+                className="w-full bg-charity-gold hover:bg-amber-600 text-white font-medium py-2 px-4 rounded-md transition-all duration-300 hover:scale-105 flex items-center justify-center"
               >
                 <Heart className="mr-2 h-4 w-4" />
                 Submit Thank You

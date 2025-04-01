@@ -1,7 +1,7 @@
 
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { SectionTitle } from "@/components/ui/section-title";
+import { DonateSection } from "@/components/donate-section";
 
 const Donate = () => {
   return (
@@ -9,15 +9,7 @@ const Donate = () => {
       <Navbar />
       
       <main className="flex-grow">
-        <div className="container mx-auto py-16">
-          <SectionTitle 
-            title="Donate" 
-            subtitle="Support our mission with your contribution"
-          />
-          <p className="text-muted-foreground">
-            This page is under development. Please check back later for donation options.
-          </p>
-        </div>
+        <DonateSection />
       </main>
       
       <Footer />
