@@ -1,4 +1,3 @@
-
 import React from "react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Input } from "@/components/ui/input";
@@ -8,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { CreditCard, DollarSign, CashIcon, Heart } from "lucide-react";
+import { CreditCard, DollarSign, Banknote, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
@@ -83,13 +82,7 @@ export function DonateSection() {
               </svg>
             )} />
             
-            <PaymentOption name="Cash App" icon={(props) => (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-10 h-10 text-green-500" {...props}>
-                <path d="M22.5 4v16c0 1.4-1.1 2.5-2.5 2.5H4c-1.4 0-2.5-1.1-2.5-2.5V4c0-1.4 1.1-2.5 2.5-2.5h16c1.4 0 2.5 1.1 2.5 2.5z" fill="#00D632" />
-                <path d="M17.6 9.5c-.2-.7-.5-.7-1.1-.7h-.3l-.5 3.1c0 .1.1.2.2.2h.2c.3 0 .6 0 .9-.2.4-.3.8-1.2.9-1.8 0-.2-.1-.4-.3-.6z" fill="white" />
-                <path d="M14.4 8.8c-2.3 0-3.9 1.7-3.9 3.8 0 1.2.7 2 1.9 2 1.8 0 3-1.1 3-2.9 0-1.2-.6-2.9-1-2.9zm-1.4 4.4c-.5 0-.7-.4-.7-.8 0-1 .5-1.7 1.1-1.7.5 0 .7.4.7.8.1.9-.5 1.7-1.1 1.7z" fill="white" />
-              </svg>
-            )} />
+            <PaymentOption name="Cash App" icon={Banknote} className="text-green-500" />
             
             <PaymentOption name="Visa" icon={(props) => (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-10 h-10" {...props}>
