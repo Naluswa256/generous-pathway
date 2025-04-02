@@ -10,8 +10,8 @@ interface ContactInfoProps {
 }
 
 const ContactInfo = ({ icon, title, details }: ContactInfoProps) => (
-  <div className="flex gap-4">
-    <div className="bg-charity-blue bg-opacity-10 p-3 rounded-full text-charity-blue">
+  <div className="flex gap-4 items-start">
+    <div className="bg-charity-blue bg-opacity-10 p-3 rounded-full text-charity-blue flex-shrink-0">
       {icon}
     </div>
     <div>

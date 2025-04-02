@@ -44,17 +44,17 @@ export function SocialConnect() {
   ];
   
   return (
-    <div className="py-8">
-      <h2 className="text-2xl font-bold text-center mb-6">Connect With Us on Social Media</h2>
+    <div className="py-10 bg-blue-50 rounded-xl">
+      <h2 className="text-2xl font-bold text-center mb-8">Connect With Us on Social Media</h2>
       
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-6">
         {socialLinks.map((social) => (
           <a
             key={social.name}
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${social.color} text-white p-4 rounded-full transition-transform hover:scale-110`}
+            className={`${social.color} text-white p-5 rounded-full transition-all duration-300 hover:scale-110 shadow-md`}
             aria-label={`Follow us on ${social.name}`}
           >
             {social.icon}
@@ -62,8 +62,8 @@ export function SocialConnect() {
         ))}
       </div>
       
-      <p className="text-center text-muted-foreground mt-6">
-        Follow us to stay updated on our latest initiatives and events
+      <p className="text-center text-muted-foreground mt-8 max-w-xl mx-auto px-4">
+        Follow us on social media to stay updated on our latest initiatives, events, and stories of impact. Join our community of changemakers!
       </p>
     </div>
   );

@@ -7,6 +7,9 @@ import { EventCalendar } from "@/components/events/event-calendar";
 import { EventList } from "@/components/events/event-list";
 import { CTAButton } from "@/components/ui/cta-button";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
+import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription } from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+import { EventTeamContactForm } from "@/components/events/event-team-contact-form";
 
 const Events = () => {
   return (
@@ -73,9 +76,32 @@ const Events = () => {
               If you're interested in hosting a fundraising event or partnering with us for 
               community outreach, we'd love to hear from you!
             </p>
-            <CTAButton variant="accent" className="mx-auto">
-              Contact Our Events Team
-            </CTAButton>
+            
+            <Drawer>
+              <DrawerTrigger asChild>
+                <Button variant="accent" size="lg" className="mx-auto">
+                  Contact Our Events Team
+                </Button>
+              </DrawerTrigger>
+              <DrawerContent>
+                <div className="mx-auto w-full max-w-lg">
+                  <DrawerHeader className="text-center">
+                    <DrawerTitle>Contact Our Events Team</DrawerTitle>
+                    <DrawerDescription>
+                      Have an idea for an event or want to partner with us? Let's discuss how we can work together.
+                    </DrawerDescription>
+                  </DrawerHeader>
+                  <div className="p-4 pb-0">
+                    <EventTeamContactForm />
+                  </div>
+                  <DrawerFooter className="pt-2">
+                    <p className="text-sm text-muted-foreground text-center">
+                      Our events team will review your message and get back to you within 2 business days.
+                    </p>
+                  </DrawerFooter>
+                </div>
+              </DrawerContent>
+            </Drawer>
           </div>
         </section>
       </main>

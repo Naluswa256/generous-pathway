@@ -1,10 +1,11 @@
 
 import React, { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface Event {
   id: number;
@@ -126,8 +127,10 @@ export function EventList() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="default" className="w-full">
-                {selectedCategory === "upcoming" ? "Register Now" : "View Details"}
+              <Button variant="default" className="w-full" asChild>
+                <Link to={`/events/${event.id}`}>
+                  {selectedCategory === "upcoming" ? "Register Now" : "View Details"}
+                </Link>
               </Button>
             </CardFooter>
           </Card>
