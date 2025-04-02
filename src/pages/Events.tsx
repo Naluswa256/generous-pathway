@@ -79,7 +79,7 @@ const Events = () => {
             
             <Drawer>
               <DrawerTrigger asChild>
-                <Button variant="accent" size="lg" className="mx-auto">
+                <Button variant="secondary" size="lg" className="mx-auto">
                   Contact Our Events Team
                 </Button>
               </DrawerTrigger>
