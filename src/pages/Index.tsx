@@ -12,6 +12,7 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { LatestNewsSection } from "@/components/latest-news-section";
 import { TrusteesSection } from "@/components/trustees-section";
 import { DonateSection } from "@/components/donate-section";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { useEffect, useState } from "react";
 
 const Index = () => {
@@ -73,6 +74,7 @@ const Index = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

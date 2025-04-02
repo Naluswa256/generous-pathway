@@ -7,6 +7,7 @@ import { AboutHero } from "@/components/about/about-hero";
 import { OurStory } from "@/components/about/our-story";
 import { OurMission } from "@/components/about/our-mission";
 import { AmbassadorsTrustees } from "@/components/about/ambassadors-trustees";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 const About = () => {
   return (
@@ -21,6 +22,7 @@ const About = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
