@@ -46,10 +46,29 @@ export function CTAButton({
     }
   };
 
-  const Comp = asChild ? Slot : Button;
-  
+  // Only use Slot when asChild is true and children is a valid React element
+  if (asChild) {
+    // Make sure we have a single valid element as children
+    const child = React.isValidElement(children) ? children : <span>{children}</span>;
+
+    return (
+      <Slot
+        className={cn(
+          getVariantStyles(),
+          getSizeStyles(),
+          "font-medium transition-all duration-200 rounded-md text-white flex items-center justify-center gap-2 shadow-sm hover:shadow",
+          className
+        )}
+        onClick={onClick}
+      >
+        {child}
+      </Slot>
+    );
+  }
+
+  // Normal button rendering when asChild is false
   return (
-    <Comp
+    <Button
       className={cn(
         getVariantStyles(),
         getSizeStyles(),
@@ -58,8 +77,8 @@ export function CTAButton({
       )}
       onClick={onClick}
     >
-      {!asChild && showIcon && <Heart className="w-4 h-4" />}
+      {showIcon && <Heart className="w-4 h-4" />}
       {children}
-    </Comp>
+    </Button>
   );
 }
