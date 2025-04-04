@@ -1,7 +1,8 @@
 
-import { Book, GalleryHorizontal, Calendar, Video } from "lucide-react";
+import { Book, Calendar, HandHeart } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export function QuickLinksSection() {
   const links = [
@@ -38,7 +39,7 @@ export function QuickLinksSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           {links.map((link, index) => (
             <Link to={link.url} key={index} className="group">
-              <div className="bg-white rounded-xl p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
+              <div className="bg-white rounded-xl p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 duration-300">
                 <div className="mb-4">{link.icon}</div>
                 <h3 className="text-xl font-semibold mb-2 group-hover:text-charity-blue transition-colors">
                   {link.title}
@@ -46,7 +47,7 @@ export function QuickLinksSection() {
                 <p className="text-muted-foreground mb-4">{link.description}</p>
                 <span className="inline-flex items-center text-charity-blue font-medium">
                   Read More
-                  <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </span>
@@ -58,5 +59,3 @@ export function QuickLinksSection() {
     </section>
   );
 }
-
-import { HandHeart } from "lucide-react";

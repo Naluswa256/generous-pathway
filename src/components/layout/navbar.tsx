@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CTAButton } from "@/components/ui/cta-button";
@@ -11,9 +11,10 @@ interface NavLinkProps {
   children: React.ReactNode;
   className?: string;
   active?: boolean;
+  onClick?: () => void;
 }
 
-const NavLink = ({ href, children, className, active }: NavLinkProps) => (
+const NavLink = ({ href, children, className, active, onClick }: NavLinkProps) => (
   <Link
     to={href}
     className={cn(
@@ -21,6 +22,7 @@ const NavLink = ({ href, children, className, active }: NavLinkProps) => (
       active && "text-charity-blue",
       className
     )}
+    onClick={onClick}
   >
     {children}
   </Link>
@@ -28,38 +30,76 @@ const NavLink = ({ href, children, className, active }: NavLinkProps) => (
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const isActive = (path: string) => {
     return location.pathname === path;
   };
 
+  // Add scroll effect for better UI
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Add navigation links with corresponding routes
+  const navLinks = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About Us" },
+    { path: "/what-we-do", label: "What We Do" },
+    { path: "/how-we-started", label: "How We Started" },
+    { path: "/news", label: "News" },
+    { path: "/events", label: "Upcoming Events" },
+    { path: "/blog", label: "Blogs" },
+    { path: "/contact", label: "Connect With Us" }
+  ];
+
   return (
-    <header className="sticky top-0 w-full bg-white/80 backdrop-blur-lg z-50 border-b border-border shadow-sm">
+    <header className={cn(
+      "sticky top-0 w-full bg-white/80 backdrop-blur-lg z-50 border-b border-border transition-shadow duration-300",
+      isScrolled && "shadow-md"
+    )}>
       <div className="container mx-auto flex items-center justify-between py-4">
         <div className="flex items-center">
           <Link to="/" className="font-bold text-2xl text-charity-blue mr-8">
             SIC
           </Link>
           <nav className="hidden md:flex items-center space-x-1">
-            <NavLink href="/" active={isActive('/')}>Home</NavLink>
-            <NavLink href="/about" active={isActive('/about')}>About Us</NavLink>
-            <NavLink href="/what-we-do" active={isActive('/what-we-do')}>What We Do</NavLink>
-            <NavLink href="/how-we-started" active={isActive('/how-we-started')}>How We Started</NavLink>
-            <NavLink href="/news" active={isActive('/news')}>News</NavLink>
-            <NavLink href="/events" active={isActive('/events')}>Upcoming Events</NavLink>
-            <NavLink href="/blog" active={isActive('/blog')}>Blogs</NavLink>
-            <NavLink href="/contact" active={isActive('/contact')}>Connect With Us</NavLink>
-            <NavLink href="/donate" active={isActive('/donate')}>Your Donation</NavLink>
+            {navLinks.map(link => (
+              <NavLink 
+                key={link.path} 
+                href={link.path} 
+                active={isActive(link.path)}
+              >
+                {link.label}
+              </NavLink>
+            ))}
           </nav>
         </div>
 
         <div className="hidden md:block">
-          <CTAButton>Donate Now</CTAButton>
+          <CTAButton asChild>
+            <Link to="/donate">Donate Now</Link>
+          </CTAButton>
         </div>
 
         <Button
@@ -72,21 +112,24 @@ export function Navbar() {
         </Button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu with animation */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-border animate-fade-in">
           <div className="container mx-auto py-4 flex flex-col space-y-3">
-            <NavLink href="/" active={isActive('/')}>Home</NavLink>
-            <NavLink href="/about" active={isActive('/about')}>About Us</NavLink>
-            <NavLink href="/what-we-do" active={isActive('/what-we-do')}>What We Do</NavLink>
-            <NavLink href="/how-we-started" active={isActive('/how-we-started')}>How We Started</NavLink>
-            <NavLink href="/news" active={isActive('/news')}>News</NavLink>
-            <NavLink href="/events" active={isActive('/events')}>Upcoming Events</NavLink>
-            <NavLink href="/blog" active={isActive('/blog')}>Blogs</NavLink>
-            <NavLink href="/contact" active={isActive('/contact')}>Connect With Us</NavLink>
-            <NavLink href="/donate" active={isActive('/donate')}>Your Donation</NavLink>
+            {navLinks.map(link => (
+              <NavLink 
+                key={link.path} 
+                href={link.path} 
+                active={isActive(link.path)}
+                onClick={closeMenu}
+              >
+                {link.label}
+              </NavLink>
+            ))}
             <div className="pt-2">
-              <CTAButton className="w-full justify-center">Donate Now</CTAButton>
+              <CTAButton className="w-full justify-center" asChild>
+                <Link to="/donate" onClick={closeMenu}>Donate Now</Link>
+              </CTAButton>
             </div>
           </div>
         </div>

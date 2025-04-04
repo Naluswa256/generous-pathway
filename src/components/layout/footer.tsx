@@ -13,16 +13,16 @@ export function Footer() {
               Supporting communities and empowering individuals through sustainable initiatives and charitable work.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white">
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white">
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white">
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white">
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
                 <Mail size={20} />
               </a>
             </div>
@@ -31,21 +31,21 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link to="/" className="text-gray-300 hover:text-white">Home</Link></li>
-              <li><Link to="/about" className="text-gray-300 hover:text-white">About Us</Link></li>
-              <li><Link to="/what-we-do" className="text-gray-300 hover:text-white">What We Do</Link></li>
-              <li><Link to="/how-we-started" className="text-gray-300 hover:text-white">How We Started</Link></li>
-              <li><Link to="/news" className="text-gray-300 hover:text-white">News</Link></li>
+              <li><Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
+              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/what-we-do" className="text-gray-300 hover:text-white transition-colors">What We Do</Link></li>
+              <li><Link to="/how-we-started" className="text-gray-300 hover:text-white transition-colors">How We Started</Link></li>
+              <li><Link to="/news" className="text-gray-300 hover:text-white transition-colors">News</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold text-lg mb-4">Our Work</h4>
             <ul className="space-y-2">
-              <li><Link to="/events" className="text-gray-300 hover:text-white">Upcoming Events</Link></li>
-              <li><Link to="/blog" className="text-gray-300 hover:text-white">Blogs</Link></li>
-              <li><Link to="/donate" className="text-gray-300 hover:text-white">Your Donation</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-white">Connect With Us</Link></li>
+              <li><Link to="/events" className="text-gray-300 hover:text-white transition-colors">Upcoming Events</Link></li>
+              <li><Link to="/blog" className="text-gray-300 hover:text-white transition-colors">Blogs</Link></li>
+              <li><Link to="/donate" className="text-gray-300 hover:text-white transition-colors">Donate</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Connect With Us</Link></li>
             </ul>
           </div>
           

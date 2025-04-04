@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { Navbar } from "@/components/layout/navbar";
@@ -19,8 +18,7 @@ interface NewsItem {
   content?: string;
 }
 
-// This would typically come from an API or CMS
-const newsItems: NewsItem[] = [
+const getNewsItems = (): NewsItem[] => [
   {
     id: 1,
     title: "Clean Water Project Completed in Kampala",
@@ -178,7 +176,54 @@ const newsItems: NewsItem[] = [
     summary: "25 disabled youth have completed vocational training in tailoring and crafts to help them earn a living. The six-month program equips them with practical skills for self-employment and financial independence.",
     category: "Vocational Training",
     slug: "vocational-training-disabled-youth",
-    content: `<p>Sample content for this news item.</p>`
+    content: `
+      <p>SIC Uganda is proud to announce the successful conclusion of our intensive vocational training program designed specifically for young people with disabilities. This initiative, which ran for six months, equipped 25 youth with various physical disabilities with valuable skills in tailoring and crafts.</p>
+
+      <h2>Breaking Down Barriers</h2>
+      <p>In Uganda, people with disabilities face significant challenges in accessing education and employment opportunities. Our vocational training program was specifically designed to address these barriers by:</p>
+      <ul>
+        <li>Creating an accessible learning environment tailored to various disabilities</li>
+        <li>Providing adaptive equipment and tools</li>
+        <li>Focusing on skills that enable self-employment and financial independence</li>
+        <li>Building confidence and entrepreneurial mindsets</li>
+      </ul>
+
+      <h2>Comprehensive Training</h2>
+      <p>The six-month program covered several key areas:</p>
+      <ul>
+        <li>Basic and advanced tailoring techniques</li>
+        <li>Craft making using local materials</li>
+        <li>Quality control and finishing</li>
+        <li>Business management and financial literacy</li>
+        <li>Marketing and customer service</li>
+        <li>Digital skills for online selling</li>
+      </ul>
+
+      <h2>Success Stories</h2>
+      <p>Among our successful graduates is 22-year-old Esther, who has been wheelchair-bound since childhood. "Before joining this program, I felt like a burden to my family," she shares. "Now, I can make clothes and crafts that people are willing to pay good money for. I've already started taking orders from neighbors and have plans to open a small shop."</p>
+
+      <p>Another graduate, 19-year-old Timothy, who has hearing impairment, has already secured a position at a local tailor shop. His employer was impressed by his precision and creativity, qualities Timothy developed during the program.</p>
+
+      <h2>Graduation and Startup Support</h2>
+      <p>At the graduation ceremony held last week, each participant received:</p>
+      <ul>
+        <li>A tailoring machine or craft-making starter kit</li>
+        <li>A certificate of completion</li>
+        <li>A small business grant to help launch their enterprise</li>
+        <li>Ongoing mentorship for the next 12 months</li>
+      </ul>
+
+      <h2>Looking Forward</h2>
+      <p>The success of this program has encouraged us to expand our vocational training initiatives. With continued support, we aim to:</p>
+      <ul>
+        <li>Double the number of participants in the next cohort</li>
+        <li>Add new skill areas such as electronics repair and food processing</li>
+        <li>Establish a marketplace where graduates can sell their products</li>
+        <li>Advocate for inclusive employment policies with local businesses</li>
+      </ul>
+
+      <p>We extend our heartfelt thanks to all donors and partners who made this transformative program possible. Your support has not only equipped these young people with practical skills but has given them hope, dignity, and a path to independence.</p>
+    `
   },
   {
     id: 5,
@@ -188,7 +233,50 @@ const newsItems: NewsItem[] = [
     summary: "Our annual fundraising gala was a tremendous success, raising over $50,000 for our programs. The event featured performances by local artists and testimonials from people we've helped.",
     category: "Fundraising",
     slug: "annual-fundraising-gala",
-    content: `<p>Sample content for this news item.</p>`
+    content: `
+      <p>SIC Uganda's Annual Fundraising Gala, held on March 10th at the prestigious Kampala Serena Hotel, exceeded all expectations by raising a record-breaking $50,000 for our community programs. The evening brought together supporters, partners, and beneficiaries for a night of celebration, reflection, and generous giving.</p>
+
+      <h2>A Night of Connection and Commitment</h2>
+      <p>The gala, themed "Building Bridges of Hope," transformed the hotel's Victoria Ballroom into an elegant space that highlighted SIC's work across Uganda. Interactive displays showcased our projects in education, healthcare, clean water, and vocational training, allowing guests to understand the impact of their support.</p>
+
+      <p>Executive Director Sarah Namuli opened the evening with a powerful address: "Tonight we gather not just to raise funds, but to reaffirm our shared commitment to creating lasting change in communities that need it most. Every dollar raised tonight will directly touch a life."</p>
+
+      <h2>Voices of Impact</h2>
+      <p>The most moving moments of the evening came when beneficiaries of SIC's programs shared their stories:</p>
+
+      <p>Fourteen-year-old Esther, a beneficiary of our education program, received a standing ovation after sharing how a scholarship had allowed her to return to school and pursue her dream of becoming a doctor. "Before SIC came to my village, I had given up on education. Now I am top of my class and have hope for my future."</p>
+
+      <p>Mr. Okello, representing a community that received a clean water project last year, shared how the installation of a borehole had transformed their village: "Our children are healthier, our women no longer walk for hours to fetch water, and we have started small gardens that improve our nutrition and income."</p>
+
+      <h2>Entertainment and Auction</h2>
+      <p>Local cultural performers, including the acclaimed Crane Performers dance troupe, provided entertainment that celebrated Uganda's rich cultural heritage. Their energetic performances had guests on their feet, joining in traditional dances.</p>
+
+      <p>The live auction, masterfully conducted by celebrity auctioneer James Wutu, was the highlight of the fundraising efforts. Items included:</p>
+      <ul>
+        <li>A weekend safari package at Murchison Falls National Park</li>
+        <li>Original artwork by renowned Ugandan artists</li>
+        <li>A private dinner prepared by one of Kampala's top chefs</li>
+        <li>Handcrafted jewelry made by participants of our vocational training program</li>
+      </ul>
+
+      <p>The auction alone raised $15,000, with a beautiful landscape painting by artist Joseph Kabugo fetching the highest bid of the night at $3,000.</p>
+
+      <h2>Corporate Partners Step Up</h2>
+      <p>Several corporate partners announced significant commitments during the event. East African Bank pledged $10,000 toward our educational scholarship program, while Kampala Telecom committed to providing technology for our vocational training centers.</p>
+
+      <p>"We believe in SIC's approach to sustainable community development," said Richard Mugisha, CEO of East African Bank. "Their focus on empowerment rather than dependency aligns perfectly with our corporate social responsibility goals."</p>
+
+      <h2>Looking Forward</h2>
+      <p>The funds raised will support several key initiatives in the coming year:</p>
+      <ul>
+        <li>Expansion of our clean water projects to five additional villages</li>
+        <li>Educational scholarships for 50 orphaned children</li>
+        <li>Medical outreach clinics in remote communities</li>
+        <li>Launch of a new vocational training center in northern Uganda</li>
+      </ul>
+
+      <p>"The generosity we've witnessed tonight will transform thousands of lives," concluded Board Chairman Dr. Martin Lubega. "But beyond the funds raised, seeing our community come together with such commitment gives us the energy and inspiration to continue this important work."</p>
+    `
   },
   {
     id: 6,
@@ -198,7 +286,52 @@ const newsItems: NewsItem[] = [
     summary: "SIC has opened a new community center that will serve as a hub for education, healthcare, and vocational training. The center will benefit over 2,000 people in the surrounding villages.",
     category: "Infrastructure",
     slug: "new-community-center-opens",
-    content: `<p>Sample content for this news item.</p>`
+    content: `
+      <p>SIC Uganda is proud to announce the grand opening of our new multi-purpose community center in Namutumba district, Eastern Uganda. This state-of-the-art facility, which opened its doors on April 15th, will serve as a central hub for education, healthcare, vocational training, and community gatherings for over 2,000 people from surrounding villages.</p>
+
+      <h2>A Vision Realized</h2>
+      <p>The community center represents the culmination of three years of planning, fundraising, and construction. The project, which cost approximately $120,000, was made possible through the generous support of international donors, partner organizations, and countless individual contributors.</p>
+
+      <p>"This center is a dream come true for our community," said Local Council Chairperson Mrs. Nambozo during the ribbon-cutting ceremony. "For years, we've needed a place where our children can learn, where we can receive medical care, and where we can gather as a community. Today, that dream has become reality."</p>
+
+      <h2>Comprehensive Facilities</h2>
+      <p>The 1,200-square-meter facility includes:</p>
+      <ul>
+        <li>A learning center with a library and computer lab</li>
+        <li>A health clinic equipped for basic medical care and maternal health services</li>
+        <li>Vocational training workshops for carpentry, tailoring, and computer skills</li>
+        <li>A community hall for meetings, events, and celebrations</li>
+        <li>Administrative offices for SIC staff and community leaders</li>
+        <li>Recreational area for children and youth activities</li>
+        <li>Sustainable features including rainwater harvesting and solar power</li>
+      </ul>
+
+      <h2>Immediate Impact</h2>
+      <p>Even before the official opening, the center had begun to make a difference. The clinic provided prenatal care to 45 expectant mothers in its first week of operation. The library has registered 120 children who now have access to books and educational materials, many for the first time in their lives.</p>
+
+      <p>"I come here every day after school to read and do my homework," says 12-year-old Mercy. "At home, we don't have books or a quiet place to study. Here I can learn better."</p>
+
+      <h2>Sustainable Operations</h2>
+      <p>The center was designed with sustainability in mind, both environmentally and operationally. Solar panels provide clean electricity, while rainwater harvesting systems reduce reliance on distant water sources.</p>
+
+      <p>To ensure long-term sustainability, a community management committee has been established, consisting of local leaders, SIC representatives, and community members. This committee will oversee day-to-day operations and guide the center's development based on community needs.</p>
+
+      <p>"We've designed the operational model to gradually transition to full community ownership over the next five years," explains SIC Program Director Robert Mukasa. "Initial funding will come from SIC and partners, but income-generating activities like computer training and hall rentals will increasingly support the center's running costs."</p>
+
+      <h2>Future Plans</h2>
+      <p>The community center is just the beginning of SIC's expanded presence in Eastern Uganda. Plans for the coming year include:</p>
+      <ul>
+        <li>Launching a comprehensive youth development program</li>
+        <li>Establishing satellite reading clubs in five surrounding villages</li>
+        <li>Expanding the health clinic to offer additional services, including dental care</li>
+        <li>Creating a marketplace where vocational training graduates can sell their products</li>
+      </ul>
+
+      <p>"This center represents what's possible when organizations and communities work together," said SIC's Executive Director during the opening ceremony. "It will serve as a model for future developments across Uganda, demonstrating how integrated services can transform communities."</p>
+
+      <h2>Join Our Efforts</h2>
+      <p>SIC Uganda invites supporters to contribute to the ongoing operations and programs at the new community center. Whether through financial donations, volunteer time, or expertise sharing, your involvement can help ensure this valuable resource continues to serve the community for generations to come.</p>
+    `
   }
 ];
 
@@ -206,34 +339,49 @@ const NewsItemPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [newsItem, setNewsItem] = useState<NewsItem | null>(null);
   const [relatedNews, setRelatedNews] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   
   useEffect(() => {
-    // Find the news item with the matching slug
+    setIsLoading(true);
+    
+    const newsItems = getNewsItems();
     const foundNewsItem = newsItems.find(item => item.slug === slug);
     
     if (foundNewsItem) {
       setNewsItem(foundNewsItem);
       
-      // Set page title
-      document.title = `${foundNewsItem.title} | Sharing is Caring`;
+      document.title = `${foundNewsItem.title} | SIC Uganda`;
       
-      // Find related news (same category, excluding current)
       const related = newsItems
         .filter(item => item.category === foundNewsItem.category && item.id !== foundNewsItem.id)
         .slice(0, 2);
       setRelatedNews(related);
+      
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
     } else {
-      // Redirect to news listing if item not found
       navigate("/news");
     }
     
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, [slug, navigate]);
   
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center">
+          <div className="animate-spin h-12 w-12 rounded-full border-t-4 border-charity-blue border-r-transparent border-b-4 border-l-transparent"></div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
   if (!newsItem) {
-    return null; // Could add a loading state here
+    return null;
   }
   
   const formattedDate = new Date(newsItem.date).toLocaleDateString("en-US", {
@@ -242,12 +390,33 @@ const NewsItemPage = () => {
     day: "numeric"
   });
   
+  const shareUrl = window.location.href;
+  
+  const handleShare = (platform: string) => {
+    let shareLink = "";
+    
+    switch (platform) {
+      case "facebook":
+        shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+        break;
+      case "twitter":
+        shareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(newsItem.title)}`;
+        break;
+      case "linkedin":
+        shareLink = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+        break;
+      default:
+        return;
+    }
+    
+    window.open(shareLink, "_blank", "width=600,height=400");
+  };
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero section */}
         <div className="relative h-[50vh] min-h-[400px]">
           <div 
             className="absolute inset-0 bg-cover bg-center"
@@ -273,13 +442,11 @@ const NewsItemPage = () => {
           </div>
         </div>
         
-        {/* Content section */}
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: newsItem.content || newsItem.summary }} />
               
-              {/* Share */}
               <div className="mt-8 pt-8 border-t">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="font-medium flex items-center">
@@ -287,15 +454,30 @@ const NewsItemPage = () => {
                     Share this article:
                   </span>
                   <div className="flex gap-2">
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      className="rounded-full"
+                      onClick={() => handleShare("facebook")}
+                    >
                       <Facebook className="h-4 w-4" />
                       <span className="sr-only">Share on Facebook</span>
                     </Button>
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      className="rounded-full"
+                      onClick={() => handleShare("twitter")}
+                    >
                       <Twitter className="h-4 w-4" />
                       <span className="sr-only">Share on Twitter</span>
                     </Button>
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      className="rounded-full"
+                      onClick={() => handleShare("linkedin")}
+                    >
                       <Linkedin className="h-4 w-4" />
                       <span className="sr-only">Share on LinkedIn</span>
                     </Button>
@@ -305,19 +487,17 @@ const NewsItemPage = () => {
             </div>
             
             <div className="lg:col-span-1">
-              {/* Donation CTA */}
-              <div className="bg-charity-blue text-white p-6 rounded-lg mb-8">
+              <div className="bg-charity-blue text-white p-6 rounded-lg mb-8 sticky top-24">
                 <h3 className="font-bold text-xl mb-3">Support Our Mission</h3>
                 <p className="mb-4">Your donation helps us continue our work with those who need it most.</p>
                 <CTAButton 
                   className="w-full bg-white text-charity-blue hover:bg-gray-100" 
-                  onClick={() => navigate("/donate")}
+                  asChild
                 >
-                  Donate Now
+                  <Link to="/donate">Donate Now</Link>
                 </CTAButton>
               </div>
               
-              {/* Related news */}
               {relatedNews.length > 0 && (
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h3 className="font-bold text-xl mb-4">Related News</h3>
@@ -328,6 +508,7 @@ const NewsItemPage = () => {
                           <img 
                             src={item.image} 
                             alt={item.title}
+                            loading="lazy"
                             className="w-20 h-20 object-cover rounded transition-transform group-hover:scale-105"
                           />
                           <div>

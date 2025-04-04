@@ -1,13 +1,13 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Calendar } from "lucide-react";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 interface NewsItem {
   id: number;
@@ -79,10 +79,34 @@ const newsItems: NewsItem[] = [
 const News = () => {
   const categories = ["All Categories", ...Array.from(new Set(newsItems.map(item => item.category)))];
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [isLoading, setIsLoading] = useState(true);
   
   const filteredNews = selectedCategory === "All Categories" 
     ? newsItems 
     : newsItems.filter(item => item.category === selectedCategory);
+
+  // Simulate loading for better UX
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 400);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Add loading effect when changing categories
+  const handleCategoryChange = (category: string) => {
+    setIsLoading(true);
+    setSelectedCategory(category);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  };
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -106,7 +130,7 @@ const News = () => {
                       key={category}
                       variant={selectedCategory === category ? "default" : "ghost"}
                       className={`w-full justify-start text-left ${selectedCategory === category ? 'bg-charity-blue hover:bg-charity-blue/90' : ''}`}
-                      onClick={() => setSelectedCategory(category)}
+                      onClick={() => handleCategoryChange(category)}
                     >
                       {category}
                     </Button>
@@ -121,6 +145,7 @@ const News = () => {
                         src={item.image}
                         alt={item.title}
                         className="w-16 h-16 object-cover rounded-md transition-transform group-hover:scale-105"
+                        loading="lazy"
                       />
                       <div>
                         <h4 className="text-sm font-medium line-clamp-2 group-hover:text-charity-blue transition-colors">{item.title}</h4>
@@ -133,7 +158,19 @@ const News = () => {
             </div>
             
             <div className="md:col-span-3">
-              {filteredNews.length === 0 ? (
+              {isLoading ? (
+                <div className="grid md:grid-cols-2 gap-8">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="animate-pulse">
+                      <div className="bg-gray-200 h-48 rounded-xl mb-4"></div>
+                      <div className="bg-gray-200 h-5 w-1/3 rounded mb-2"></div>
+                      <div className="bg-gray-200 h-7 rounded mb-3"></div>
+                      <div className="bg-gray-200 h-20 rounded mb-3"></div>
+                      <div className="bg-gray-200 h-5 w-1/4 rounded"></div>
+                    </div>
+                  ))}
+                </div>
+              ) : filteredNews.length === 0 ? (
                 <div className="text-center py-12">
                   <h3 className="text-xl font-medium mb-2">No news found</h3>
                   <p className="text-muted-foreground">No news articles found in this category</p>
@@ -141,13 +178,14 @@ const News = () => {
               ) : (
                 <div className="grid md:grid-cols-2 gap-8">
                   {filteredNews.map((news) => (
-                    <Link to={`/news/${news.slug}`} key={news.id} className="block">
+                    <Link to={`/news/${news.slug}`} key={news.id} className="block group">
                       <div className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg h-full flex flex-col">
                         <div className="relative h-48 overflow-hidden">
                           <img 
                             src={news.image} 
                             alt={news.title}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            loading="lazy"
                           />
                           <span className="absolute top-4 right-4 bg-charity-blue text-white text-xs font-medium px-2.5 py-1 rounded">
                             {news.category}
@@ -158,10 +196,10 @@ const News = () => {
                             <Calendar className="h-4 w-4 mr-1" />
                             <span>{news.date}</span>
                           </div>
-                          <h3 className="text-xl font-bold mb-2 transition-colors duration-200 hover:text-charity-blue">{news.title}</h3>
-                          <p className="mb-4 line-clamp-3 flex-grow">{news.summary}</p>
+                          <h3 className="text-xl font-bold mb-2 transition-colors duration-200 group-hover:text-charity-blue">{news.title}</h3>
+                          <p className="mb-4 line-clamp-3 flex-grow text-muted-foreground">{news.summary}</p>
                           <div className="mt-auto">
-                            <span className="inline-flex items-center text-charity-blue hover:text-charity-blue/80 group">
+                            <span className="inline-flex items-center text-charity-blue hover:text-charity-blue/80 group-hover:underline">
                               Read full story
                               <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -202,6 +240,7 @@ const News = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
