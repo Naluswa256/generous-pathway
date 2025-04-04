@@ -1,60 +1,86 @@
-
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SectionTitle } from "@/components/ui/section-title";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { CTAButton } from "@/components/ui/cta-button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Award, Users, Heart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Calendar } from "lucide-react";
+
+interface TimelineItemProps {
+  year: string;
+  title: string;
+  description: string;
+  image: string;
+  isLeft?: boolean;
+}
+
+const TimelineItem = ({ year, title, description, image, isLeft = false }: TimelineItemProps) => {
+  return (
+    <div className="flex flex-col md:flex-row items-center relative my-8">
+      {/* Line extending from the circle */}
+      <div className="absolute block w-1 h-full bg-muted left-1/2 top-0 transform -translate-x-1/2 z-0"></div>
+
+      {/* Circle and Year */}
+      <div className="flex-shrink-0 w-16 h-16 rounded-full bg-white border-2 border-charity-blue flex items-center justify-center text-charity-blue font-bold text-xl z-10">
+        {year}
+      </div>
+
+      {/* Content Box */}
+      <div className={`bg-white rounded-lg shadow-md p-4 md:p-6 w-full md:w-5/6 lg:w-3/4 mt-4 md:mt-0 ${isLeft ? 'md:mr-auto md:text-right' : 'md:ml-auto'}`}>
+        <h3 className="text-lg font-semibold text-charity-blue mb-2">{title}</h3>
+        <p className="text-muted-foreground">{description}</p>
+        {image && (
+          <div className="mt-4">
+            <img src={image} alt={title} className="rounded-md shadow-sm" />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const timelineData = [
+  {
+    year: "2010",
+    title: "Foundation of SIC",
+    description: "Sharing is Caring (SIC) is founded by a group of compassionate individuals with a shared vision of supporting vulnerable communities in Uganda.",
+    image: "https://images.unsplash.com/photo-1503220317375-aa07e2709d3a?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    year: "2012",
+    title: "First Community Project",
+    description: "SIC launches its first community project, focusing on providing education and healthcare support to orphaned children in rural areas.",
+    image: "https://images.unsplash.com/photo-1505673544989-39f0e8514893?q=80&w=2070&auto=format&fit=crop",
+    isLeft: true
+  },
+  {
+    year: "2015",
+    title: "Expansion of Programs",
+    description: "SIC expands its programs to include vocational training and economic empowerment initiatives for people with disabilities.",
+    image: "https://images.unsplash.com/photo-1543076659-93816600eb9e?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    year: "2018",
+    title: "Healthcare Initiatives",
+    description: "SIC initiates healthcare programs for elderly grandparents who are caring for orphaned children, providing medical assistance and support.",
+    image: "https://images.unsplash.com/photo-1505935428862-770b6f24f629?q=80&w=2070&auto=format&fit=crop",
+    isLeft: true
+  },
+  {
+    year: "2020",
+    title: "Partnerships and Collaborations",
+    description: "SIC establishes partnerships with local and international organizations to enhance its reach and impact in the communities it serves.",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4ca6d8?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    year: "2023",
+    title: "Sustainable Development Goals",
+    description: "SIC aligns its programs with the United Nations Sustainable Development Goals, focusing on long-term, sustainable solutions for poverty alleviation.",
+    image: "https://images.unsplash.com/photo-1598649967744-e46a1248c694?q=80&w=2070&auto=format&fit=crop",
+    isLeft: true
+  }
+];
 
 const HowWeStarted = () => {
-  // Timeline data
-  const timelineEvents = [
-    {
-      year: 2010,
-      title: "The Beginning",
-      description: "John Mukasa founds Sharing is Caring with a focus on supporting orphaned children in his hometown.",
-      icon: <Heart className="h-6 w-6 text-white" />,
-      color: "bg-charity-blue"
-    },
-    {
-      year: 2012,
-      title: "Expanding Our Mission",
-      description: "SIC expands its mission to include support for people with disabilities after identifying critical gaps in services.",
-      icon: <Users className="h-6 w-6 text-white" />,
-      color: "bg-charity-green"
-    },
-    {
-      year: 2015,
-      title: "First International Recognition",
-      description: "SIC receives its first international humanitarian award for community development initiatives.",
-      icon: <Award className="h-6 w-6 text-white" />,
-      color: "bg-charity-gold"
-    },
-    {
-      year: 2018,
-      title: "Elderly Support Program",
-      description: "Launch of dedicated program to support elderly grandparents who care for orphaned children.",
-      icon: <Heart className="h-6 w-6 text-white" />,
-      color: "bg-purple-500"
-    },
-    {
-      year: 2020,
-      title: "10 Year Anniversary",
-      description: "Celebrating a decade of community impact with the opening of our first comprehensive community center.",
-      icon: <Calendar className="h-6 w-6 text-white" />,
-      color: "bg-charity-dark"
-    },
-    {
-      year: 2023,
-      title: "Looking to the Future",
-      description: "Launch of new strategic plan focusing on sustainability and expanded community leadership.",
-      icon: <Heart className="h-6 w-6 text-white" />,
-      color: "bg-charity-blue"
-    }
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -62,185 +88,61 @@ const HowWeStarted = () => {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-charity-dark/5 py-20">
+        <section className="relative bg-charity-blue/10 py-20">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="order-2 lg:order-1">
                 <SectionTitle 
                   title="How We Started" 
-                  subtitle="The journey of SIC from the beginning"
+                  subtitle="The journey of SIC"
                   highlightText
                   animate
                 />
-                <p className="text-lg mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                  The story of Sharing is Caring begins with one man's vision to create 
-                  lasting change in his community. Born from personal experience and a deep 
-                  commitment to serving the most vulnerable, our organization has grown from 
-                  humble beginnings to a comprehensive support system for those in need.
+                <p className="text-lg mb-8 animate-fade-in delay-200">
+                  Founded with compassion and dedication, Sharing is Caring (SIC) began as a small 
+                  initiative by passionate individuals who wanted to make a difference in the lives 
+                  of vulnerable communities in Uganda.
                 </p>
                 <CTAButton 
-                  className="animate-fade-in" 
-                  style={{ animationDelay: '0.4s' }}
-                  onClick={() => document.getElementById('founder-story')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="animate-fade-in delay-400"
+                  onClick={() => document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Read Our Story
+                  Explore Our Journey
                 </CTAButton>
               </div>
-              <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                <img 
-                  src="https://images.unsplash.com/photo-1593113630400-ea4288922497?q=80&w=2070&auto=format&fit=crop" 
-                  alt="John Mukasa, Founder of SIC" 
-                  className="rounded-lg shadow-lg"
-                />
-                <div className="absolute -bottom-6 -right-6 bg-charity-blue text-white p-4 rounded-lg shadow-lg transform rotate-3 z-10">
-                  <p className="font-bold">Founded in 2010</p>
+              
+              <div className="order-1 lg:order-2">
+                <div className="relative">
+                  <img 
+                    src="https://images.unsplash.com/photo-1459183885421-5cc683b8dbba?q=80&w=2070&auto=format&fit=crop" 
+                    alt="SIC beginnings" 
+                    className="rounded-lg shadow-lg w-full object-cover animate-fade-in"
+                  />
+                  <div className="absolute -bottom-5 -left-5 bg-white p-4 rounded-lg shadow-lg animate-fade-in delay-300">
+                    <p className="font-bold text-charity-blue text-xl">Est. 2010</p>
+                    <p className="text-muted-foreground">Uganda</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
         
-        {/* Founder's Story */}
-        <section id="founder-story" className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1">
-                <SectionTitle 
-                  title="Our Founder's Story" 
-                  subtitle="A personal journey of compassion"
-                  highlightText
-                  animate
-                />
-                
-                <ScrollArea className="h-64 rounded-md border p-4 mb-6">
-                  <div className="pr-4">
-                    <p className="mb-4">
-                      "The idea for SIC came to me when I visited my childhood village after completing my education," 
-                      John recalls. "I found many children without parents, being raised by elderly grandparents who 
-                      were struggling to provide for them. Many of these children had lost their parents to HIV/AIDS, 
-                      and their grandparents were doing their best with very limited resources."
-                    </p>
-                    
-                    <p className="mb-4">
-                      What began as a small initiative to provide school supplies to orphaned children has grown into 
-                      a comprehensive organization addressing multiple community needs. John's vision expanded when he 
-                      observed that many people with disabilities in the community lacked access to assistive devices 
-                      and opportunities for economic independence.
-                    </p>
-                    
-                    <p className="mb-4">
-                      "I realized that sharing resources, knowledge, and opportunities could transform lives," says John. 
-                      "That's where our name comes from—the simple but powerful principle that sharing is indeed caring."
-                    </p>
-                    
-                    <p>
-                      Today, SIC works across Uganda, providing education for orphans, assistive devices and skills 
-                      training for people with disabilities, and healthcare and support for elderly caregivers. 
-                      John's leadership has been recognized nationally and internationally, earning him several 
-                      humanitarian awards for his dedication to community service.
-                    </p>
-                  </div>
-                </ScrollArea>
-                
-                <Link to="/about">
-                  <CTAButton variant="secondary" className="mt-4">
-                    Learn More About Our Team
-                  </CTAButton>
-                </Link>
-              </div>
-              
-              <div className="order-1 lg:order-2 grid grid-cols-2 gap-4">
-                <Card className="overflow-hidden shadow-lg transform transition-all hover:scale-[1.02] h-64">
-                  <CardContent className="p-0">
-                    <img 
-                      src="https://images.unsplash.com/photo-1528938102132-4a9276b8e320?q=80&w=2070&auto=format&fit=crop" 
-                      alt="Early days of SIC" 
-                      className="w-full h-full object-cover"
-                    />
-                  </CardContent>
-                </Card>
-                <Card className="overflow-hidden shadow-lg transform transition-all hover:scale-[1.02] h-64 mt-8">
-                  <CardContent className="p-0">
-                    <img 
-                      src="https://images.unsplash.com/photo-1558522195-e1201b090344?q=80&w=2070&auto=format&fit=crop" 
-                      alt="First SIC project" 
-                      className="w-full h-full object-cover"
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-        
         {/* Timeline Section */}
-        <section className="py-20 bg-muted">
+        <section id="timeline" className="py-20">
           <div className="container mx-auto px-4">
             <SectionTitle 
-              title="Our Journey" 
-              subtitle="Key milestones in the SIC story"
+              title="Our Timeline" 
+              subtitle="Milestones in our journey"
               highlightText
               centered
               animate
             />
             
-            <div className="relative mt-16">
-              {/* Connector Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200"></div>
-              
-              {/* Timeline Events */}
-              <div className="space-y-24">
-                {timelineEvents.map((event, index) => (
-                  <div 
-                    key={index} 
-                    className={`relative flex items-center ${
-                      index % 2 === 0 ? "justify-start" : "justify-end"
-                    }`}
-                  >
-                    {/* Year Marker */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10">
-                      <div className={`w-12 h-12 rounded-full ${event.color} flex items-center justify-center`}>
-                        {event.icon}
-                      </div>
-                      <div className="font-bold text-2xl mt-2">{event.year}</div>
-                    </div>
-                    
-                    {/* Event Card */}
-                    <div 
-                      className={`w-5/12 bg-white p-6 rounded-lg shadow-md animate-fade-in ${
-                        index % 2 === 0 ? "mr-auto" : "ml-auto"
-                      }`}
-                      style={{ animationDelay: `${index * 0.2}s` }}
-                    >
-                      <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
-                      <p className="text-muted-foreground">{event.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* CTA Section */}
-        <section className="py-16 bg-charity-blue text-white text-center">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">Join Us in Making a Difference</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto animate-fade-in">
-              Our journey continues with your support. Together, we can create a world where everyone 
-              has the opportunity to thrive, regardless of their circumstances.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center animate-fade-in">
-              <Link to="/donate">
-                <CTAButton className="bg-white text-charity-blue hover:bg-gray-100" size="lg">
-                  Donate Now
-                </CTAButton>
-              </Link>
-              <Link to="/contact">
-                <CTAButton className="bg-transparent border-2 border-white hover:bg-white/10" variant="secondary" size="lg">
-                  Get Involved
-                </CTAButton>
-              </Link>
+            <div className="mt-12 relative">
+              {timelineData.map((item, index) => (
+                <TimelineItem key={index} {...item} />
+              ))}
             </div>
           </div>
         </section>

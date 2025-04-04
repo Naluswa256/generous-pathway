@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CTAButton } from "@/components/ui/cta-button";
 import { Menu, X } from "lucide-react";
@@ -28,9 +28,14 @@ const NavLink = ({ href, children, className, active }: NavLinkProps) => (
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
@@ -41,12 +46,15 @@ export function Navbar() {
             SIC
           </Link>
           <nav className="hidden md:flex items-center space-x-1">
-            <NavLink href="/" active>Home</NavLink>
-            <NavLink href="/about">About Us</NavLink>
-            <NavLink href="/blog">Blogs</NavLink>
-            <NavLink href="/events">Upcoming Events</NavLink>
-            <NavLink href="/contact">Connect With Us</NavLink>
-            <NavLink href="/donate">Your Donation</NavLink>
+            <NavLink href="/" active={isActive('/')}>Home</NavLink>
+            <NavLink href="/about" active={isActive('/about')}>About Us</NavLink>
+            <NavLink href="/what-we-do" active={isActive('/what-we-do')}>What We Do</NavLink>
+            <NavLink href="/how-we-started" active={isActive('/how-we-started')}>How We Started</NavLink>
+            <NavLink href="/news" active={isActive('/news')}>News</NavLink>
+            <NavLink href="/events" active={isActive('/events')}>Upcoming Events</NavLink>
+            <NavLink href="/blog" active={isActive('/blog')}>Blogs</NavLink>
+            <NavLink href="/contact" active={isActive('/contact')}>Connect With Us</NavLink>
+            <NavLink href="/donate" active={isActive('/donate')}>Your Donation</NavLink>
           </nav>
         </div>
 
@@ -68,12 +76,15 @@ export function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-border animate-fade-in">
           <div className="container mx-auto py-4 flex flex-col space-y-3">
-            <NavLink href="/" active>Home</NavLink>
-            <NavLink href="/about">About Us</NavLink>
-            <NavLink href="/blog">Blogs</NavLink>
-            <NavLink href="/events">Upcoming Events</NavLink>
-            <NavLink href="/contact">Connect With Us</NavLink>
-            <NavLink href="/donate">Your Donation</NavLink>
+            <NavLink href="/" active={isActive('/')}>Home</NavLink>
+            <NavLink href="/about" active={isActive('/about')}>About Us</NavLink>
+            <NavLink href="/what-we-do" active={isActive('/what-we-do')}>What We Do</NavLink>
+            <NavLink href="/how-we-started" active={isActive('/how-we-started')}>How We Started</NavLink>
+            <NavLink href="/news" active={isActive('/news')}>News</NavLink>
+            <NavLink href="/events" active={isActive('/events')}>Upcoming Events</NavLink>
+            <NavLink href="/blog" active={isActive('/blog')}>Blogs</NavLink>
+            <NavLink href="/contact" active={isActive('/contact')}>Connect With Us</NavLink>
+            <NavLink href="/donate" active={isActive('/donate')}>Your Donation</NavLink>
             <div className="pt-2">
               <CTAButton className="w-full justify-center">Donate Now</CTAButton>
             </div>

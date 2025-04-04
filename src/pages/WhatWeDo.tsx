@@ -25,15 +25,14 @@ const WhatWeDo = () => {
                   highlightText
                   animate
                 />
-                <p className="text-lg mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <p className="text-lg mb-8 animate-fade-in delay-200">
                   At Sharing is Caring, we believe in a holistic approach to community support. 
                   Our programs focus on three vulnerable groups: orphaned children, people with 
                   disabilities, and elderly grandparents who often serve as primary caregivers 
                   for orphaned children.
                 </p>
                 <CTAButton 
-                  className="animate-fade-in" 
-                  style={{ animationDelay: '0.4s' }}
+                  className="animate-fade-in delay-400"
                   onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   View Our Programs
@@ -130,7 +129,42 @@ const WhatWeDo = () => {
           </div>
         </section>
         
-        {/* Approach Section */}
+        {/* SIC Beliefs Section */}
+        <section className="py-20 bg-charity-blue/5">
+          <div className="container mx-auto px-4">
+            <SectionTitle 
+              title="Our Beliefs" 
+              subtitle="The foundation of all we do"
+              highlightText
+              centered
+              animate
+            />
+            
+            <div className="max-w-3xl mx-auto mt-10 space-y-6 text-center">
+              <div className="bg-white p-6 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105">
+                <h3 className="text-xl font-semibold mb-3 text-charity-blue">The Authority of God's Word</h3>
+                <p>SIC believes in the authority of the word of God as our ultimate guide for faith and practice.</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105">
+                <h3 className="text-xl font-semibold mb-3 text-charity-blue">The Holy Trinity</h3>
+                <p>SIC Uganda believes in God the Father, God the Son, and God the Holy Spirit - the three persons of the divine Trinity.</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105">
+                <h3 className="text-xl font-semibold mb-3 text-charity-blue">The Incarnation of Christ</h3>
+                <p>SIC Uganda believes in the incarnation of Jesus Christ in human form to bring salvation to the world.</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105">
+                <h3 className="text-xl font-semibold mb-3 text-charity-blue">Salvation by Grace</h3>
+                <p>SIC Uganda believes in salvation by grace through faith in Jesus Christ.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Vision Section */}
         <section className="py-20 bg-muted">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -144,56 +178,27 @@ const WhatWeDo = () => {
               
               <div>
                 <SectionTitle 
-                  title="Our Approach" 
-                  subtitle="Community-centered and sustainable solutions"
+                  title="Our Vision" 
+                  subtitle="Creating sustainable change"
                   highlightText
                   animate
                 />
                 
-                <div className="space-y-6 mt-6">
-                  <div className="flex gap-4">
-                    <div className="shrink-0 w-12 h-12 rounded-full bg-charity-blue/10 flex items-center justify-center">
-                      <Heart className="w-6 h-6 text-charity-blue" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Community Leadership</h3>
-                      <p className="text-muted-foreground">
-                        We believe that lasting change comes from within communities. 
-                        Our programs are developed with local input and led by community members.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-4">
-                    <div className="shrink-0 w-12 h-12 rounded-full bg-charity-gold/10 flex items-center justify-center">
-                      <Heart className="w-6 h-6 text-charity-gold" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Holistic Support</h3>
-                      <p className="text-muted-foreground">
-                        We address multiple aspects of well-being including physical health, 
-                        education, economic stability, and emotional support.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-4">
-                    <div className="shrink-0 w-12 h-12 rounded-full bg-charity-green/10 flex items-center justify-center">
-                      <Heart className="w-6 h-6 text-charity-green" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">Sustainable Impact</h3>
-                      <p className="text-muted-foreground">
-                        Our goal is to create programs that can eventually be sustained by the communities 
-                        themselves, fostering independence rather than dependence.
-                      </p>
-                    </div>
-                  </div>
+                <div className="mt-6">
+                  <p className="text-lg mb-6">
+                    <span className="font-semibold text-charity-blue">SIC Vision:</span> Showing compassion to the poor and needy people to make them self-sustainable persons.
+                  </p>
+                  <p className="mb-6">
+                    We believe that true transformation comes not just from providing aid, but from empowering individuals and communities to build their own sustainable futures. Our approach is holistic, addressing immediate needs while developing long-term solutions.
+                  </p>
+                  <p className="mb-8">
+                    Through education, healthcare, economic empowerment, and spiritual nurturing, we aim to break the cycle of poverty and create lasting positive change.
+                  </p>
                 </div>
                 
                 <div className="mt-8">
                   <Link to="/donate">
-                    <CTAButton>Support Our Work</CTAButton>
+                    <CTAButton>Support Our Vision</CTAButton>
                   </Link>
                 </div>
               </div>
