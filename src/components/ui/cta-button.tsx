@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Heart } from "lucide-react";
+import { Slot } from "@radix-ui/react-slot";
 
 interface CTAButtonProps {
   children: React.ReactNode;
@@ -45,8 +46,10 @@ export function CTAButton({
     }
   };
 
+  const Comp = asChild ? Slot : Button;
+  
   return (
-    <Button
+    <Comp
       className={cn(
         getVariantStyles(),
         getSizeStyles(),
@@ -54,10 +57,9 @@ export function CTAButton({
         className
       )}
       onClick={onClick}
-      asChild={asChild}
     >
       {!asChild && showIcon && <Heart className="w-4 h-4" />}
       {children}
-    </Button>
+    </Comp>
   );
 }
