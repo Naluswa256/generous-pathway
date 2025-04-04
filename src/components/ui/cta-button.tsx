@@ -11,6 +11,7 @@ interface CTAButtonProps {
   variant?: "default" | "secondary" | "accent";
   size?: "default" | "sm" | "lg";
   onClick?: () => void;
+  asChild?: boolean; // Added this property to support the Slot pattern
 }
 
 export function CTAButton({
@@ -20,6 +21,7 @@ export function CTAButton({
   variant = "default",
   size = "default",
   onClick,
+  asChild = false, // Default to false to maintain backward compatibility
 }: CTAButtonProps) {
   const getVariantStyles = () => {
     switch (variant) {
@@ -52,8 +54,9 @@ export function CTAButton({
         className
       )}
       onClick={onClick}
+      asChild={asChild}
     >
-      {showIcon && <Heart className="w-4 h-4" />}
+      {!asChild && showIcon && <Heart className="w-4 h-4" />}
       {children}
     </Button>
   );
