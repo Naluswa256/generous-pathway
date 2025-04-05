@@ -44,30 +44,6 @@ export function Hero({ title, subtitle, imageUrl, className, showOverlay = false
         }}
       />
       
-      {/* Updated overlay image with a working image URL */}
-      <div className={cn(
-        "absolute z-20 top-0 left-1/2 -translate-x-1/2 w-full max-w-xs md:max-w-md transition-all duration-1000 ease-out",
-        isLoaded 
-          ? "translate-y-0 opacity-100" 
-          : "-translate-y-full opacity-0"
-      )}>
-        <img 
-          src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop" 
-          alt="Children in Uganda"
-          className="w-full h-auto rounded-b-3xl shadow-2xl"
-        />
-      </div>
-      
-      {/* Organization name banner */}
-      <div className="absolute z-25 top-24 left-0 right-0 flex justify-center">
-        <div className={cn(
-          "bg-charity-blue/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg transform transition-all duration-1000 ease-out",
-          isLoaded ? "scale-100 opacity-100" : "scale-90 opacity-0"
-        )}>
-          <h2 className="text-white font-bold text-xl md:text-3xl tracking-wider">SIC UGANDA</h2>
-        </div>
-      </div>
-      
       <div className="absolute inset-0 z-30 flex items-center">
         <div className="container mx-auto px-4">
           <div className={cn(
