@@ -2,6 +2,7 @@
 import { CTAButton } from "@/components/ui/cta-button";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface HeroProps {
   title: string;
@@ -65,8 +66,12 @@ export function Hero({ title, subtitle, imageUrl, className, showOverlay = false
             <h1 className="text-white font-bold mb-4 md:text-5xl lg:text-6xl">{title}</h1>
             <p className="text-white/90 text-xl mb-8">{subtitle}</p>
             <div className="flex flex-wrap gap-4">
-              <CTAButton size="lg" className="bg-charity-gold hover:bg-amber-600 transition-all duration-300 hover:scale-105">Make a Difference Today</CTAButton>
-              <CTAButton size="lg" variant="secondary" className="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/50 transition-all duration-300 hover:scale-105">Learn More</CTAButton>
+              <CTAButton asChild size="lg" className="bg-charity-gold hover:bg-amber-600 transition-all duration-300 hover:scale-105">
+                <Link to="/donate">Make a Difference Today</Link>
+              </CTAButton>
+              <CTAButton asChild size="lg" variant="secondary" className="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/50 transition-all duration-300 hover:scale-105">
+                <Link to="/what-we-do">Learn More</Link>
+              </CTAButton>
             </div>
           </div>
         </div>
