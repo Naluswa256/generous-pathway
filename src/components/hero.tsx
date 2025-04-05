@@ -44,6 +44,16 @@ export function Hero({ title, subtitle, imageUrl, className, showOverlay = false
         }}
       />
       
+      {/* Organization name banner */}
+      <div className="absolute z-20 top-24 left-0 right-0 flex justify-center">
+        <div className={cn(
+          "bg-charity-gold/90 backdrop-blur-sm px-8 py-4 rounded-lg shadow-lg transform transition-all duration-1000 ease-out",
+          isLoaded ? "scale-100 opacity-100" : "scale-90 opacity-0"
+        )}>
+          <h2 className="text-white font-bold text-2xl md:text-4xl tracking-wider text-center">SIC - Sharing is Caring</h2>
+        </div>
+      </div>
+      
       <div className="absolute inset-0 z-30 flex items-center">
         <div className="container mx-auto px-4">
           <div className={cn(

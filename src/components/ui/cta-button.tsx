@@ -12,7 +12,7 @@ interface CTAButtonProps {
   variant?: "default" | "secondary" | "accent";
   size?: "default" | "sm" | "lg";
   onClick?: () => void;
-  asChild?: boolean; // Added this property to support the Slot pattern
+  asChild?: boolean;
 }
 
 export function CTAButton({
@@ -22,7 +22,7 @@ export function CTAButton({
   variant = "default",
   size = "default",
   onClick,
-  asChild = false, // Default to false to maintain backward compatibility
+  asChild = false,
 }: CTAButtonProps) {
   const getVariantStyles = () => {
     switch (variant) {
@@ -47,10 +47,7 @@ export function CTAButton({
   };
 
   // Only use Slot when asChild is true and children is a valid React element
-  if (asChild) {
-    // Make sure we have a single valid element as children
-    const child = React.isValidElement(children) ? children : <span>{children}</span>;
-
+  if (asChild && React.isValidElement(children)) {
     return (
       <Slot
         className={cn(
@@ -61,7 +58,7 @@ export function CTAButton({
         )}
         onClick={onClick}
       >
-        {child}
+        {children}
       </Slot>
     );
   }

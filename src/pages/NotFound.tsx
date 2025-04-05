@@ -1,5 +1,5 @@
 
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -27,7 +27,9 @@ const NotFound = () => {
             We couldn't find the page you're looking for. It might have been removed, 
             renamed, or didn't exist in the first place.
           </p>
-          <CTAButton>Return to Home</CTAButton>
+          <CTAButton asChild>
+            <Link to="/">Return to Home</Link>
+          </CTAButton>
         </div>
       </main>
       
