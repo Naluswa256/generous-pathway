@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import { useHomePageData } from "@/services/home-service";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { Alert } from "@/components/ui/alert";
+import { SEOHead } from "@/components/seo/seo-head";
 
 const Index = () => {
   const [animationReady, setAnimationReady] = useState(false);
@@ -75,6 +76,13 @@ const Index = () => {
   
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Sharing is Caring | Empowering the Forgotten in Uganda"
+        description="We're dedicated to supporting orphans, disabled individuals, and elderly grandparents in Uganda through community-driven initiatives and compassionate care."
+        keywords="Uganda charity, orphan support, disability assistance, elderly care, community development, donations, volunteer"
+        canonicalUrl="https://sharing-is-caring.org/"
+      />
+      
       <Navbar />
       
       <main className="flex-grow">
