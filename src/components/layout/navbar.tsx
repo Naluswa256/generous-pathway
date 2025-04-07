@@ -18,7 +18,7 @@ const NavLink = ({ href, children, className, active, onClick }: NavLinkProps) =
   <Link
     to={href}
     className={cn(
-      "text-foreground hover:text-charity-blue transition-colors px-4 py-2 font-medium",
+      "text-foreground hover:text-charity-blue transition-colors px-3 py-2 font-medium text-sm whitespace-nowrap",
       active && "text-charity-blue",
       className
     )}
@@ -61,16 +61,17 @@ export function Navbar() {
     };
   }, []);
 
-  // Add navigation links with corresponding routes
+  // Updated navigation links with shorter labels where possible
   const navLinks = [
     { path: "/", label: "Home" },
-    { path: "/about", label: "About Us" },
-    { path: "/what-we-do", label: "What We Do" },
-    { path: "/how-we-started", label: "How We Started" },
+    { path: "/about", label: "About" },
+    { path: "/what-we-do", label: "Our Work" },
+    { path: "/how-we-started", label: "Origins" },
     { path: "/news", label: "News" },
-    { path: "/events", label: "Upcoming Events" },
-    { path: "/blog", label: "Blogs" },
-    { path: "/contact", label: "Connect With Us" }
+    { path: "/events", label: "Events" },
+    { path: "/blog", label: "Blog" },
+    { path: "/contact", label: "Connect" },
+    { path: "/donate", label: "Donate" }
   ];
 
   return (
@@ -80,7 +81,7 @@ export function Navbar() {
     )}>
       <div className="container mx-auto flex items-center justify-between py-4">
         <div className="flex items-center">
-          <Link to="/" className="font-bold text-2xl text-charity-blue mr-8">
+          <Link to="/" className="font-bold text-2xl text-charity-blue mr-4">
             SIC
           </Link>
           <nav className="hidden md:flex items-center space-x-1">

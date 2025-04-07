@@ -15,9 +15,13 @@ import { DonateSection } from "@/components/donate-section";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useHomePageData } from "@/services/home-service";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { Alert } from "@/components/ui/alert";
 
 const Index = () => {
   const [animationReady, setAnimationReady] = useState(false);
+  const { data, isLoading, error, refetch } = useHomePageData();
   
   useEffect(() => {
     // Set animation ready after initial page load
@@ -26,15 +30,57 @@ const Index = () => {
     }, 100);
   }, []);
   
+  // Handle loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center">
+          <LoadingSpinner size="lg" />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
+  // Handle error state
+  if (error) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow container mx-auto py-16 px-4">
+          <Alert variant="destructive" className="mb-4">
+            Error loading content: {error.message}
+          </Alert>
+          <Button onClick={() => refetch()}>Try Again</Button>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
+  // If data is not available, show placeholder
+  if (!data) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow container mx-auto py-16 px-4">
+          <p>No content available.</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-grow">
         <Hero 
-          title="Empowering the Forgotten, One Life at a Time"
-          subtitle="We're dedicated to supporting orphans, disabled individuals, and elderly grandparents in Uganda through community-driven initiatives and compassionate care."
-          imageUrl="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop"
+          title={data.hero.title}
+          subtitle={data.hero.subtitle}
+          imageUrl={data.hero.imageUrl}
           showOverlay={true}
         />
         
@@ -58,16 +104,22 @@ const Index = () => {
         
         <section className="section bg-charity-blue text-white text-center">
           <div className="container mx-auto py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">Make a Difference Today</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
+              {data.callToAction.title}
+            </h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto animate-fade-in">
-              Your support can transform lives in Uganda. Join us in our mission to empower the forgotten and create a better world for everyone.
+              {data.callToAction.subtitle}
             </p>
             <div className="flex flex-wrap gap-4 justify-center animate-fade-in">
               <CTAButton asChild className="bg-white text-charity-blue hover:bg-gray-100 transition-all duration-300 hover:scale-105" size="lg">
-                <Link to="/donate">Donate Now</Link>
+                <Link to={data.callToAction.primaryButton.link}>
+                  {data.callToAction.primaryButton.text}
+                </Link>
               </CTAButton>
               <CTAButton asChild className="bg-transparent border-2 border-white hover:bg-white/10 transition-all duration-300 hover:scale-105" variant="secondary" size="lg">
-                <Link to="/contact">Become a Volunteer</Link>
+                <Link to={data.callToAction.secondaryButton.link}>
+                  {data.callToAction.secondaryButton.text}
+                </Link>
               </CTAButton>
             </div>
           </div>
