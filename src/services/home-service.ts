@@ -1,5 +1,5 @@
-
 import { useFetchData } from "@/hooks/use-fetch-data";
+import { useState, useEffect } from 'react';
 
 // Define TypeScript interfaces for all home page content sections
 export interface HeroSection {

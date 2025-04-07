@@ -9,6 +9,7 @@ import { QuickLinksSection } from "@/components/quick-links-section";
 import { GallerySection } from "@/components/gallery-section";
 import { AboutSICSection } from "@/components/about-sic-section";
 import { CTAButton } from "@/components/ui/cta-button";
+import { Button } from "@/components/ui/button";
 import { LatestNewsSection } from "@/components/latest-news-section";
 import { TrusteesSection } from "@/components/trustees-section";
 import { DonateSection } from "@/components/donate-section";
@@ -36,7 +37,7 @@ const Index = () => {
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-grow flex items-center justify-center">
-          <LoadingSpinner size="lg" />
+          <LoadingSpinner />
         </div>
         <Footer />
       </div>
