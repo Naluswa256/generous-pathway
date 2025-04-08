@@ -62,9 +62,13 @@ export interface ImpactSection {
 }
 
 export interface GalleryItem {
-  imageUrl: string;
+  id: string;
+  type: 'image' | 'video';
+  url: string;
   caption?: string;
-  altText: string;
+  altText?: string;
+  thumbnail?: string;
+  youtubeId?: string;
 }
 
 export interface GallerySection {
@@ -258,25 +262,51 @@ const mockHomeData: HomePageData = {
   },
   gallery: {
     title: "See Our Work",
-    subtitle: "Images from our community projects",
+    subtitle: "Images and videos showcasing our impact",
     items: [
       {
-        imageUrl: "/images/gallery/image1.jpg",
-        caption: "School renovation project",
+        id: "gal1",
+        type: "image",
+        url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop",
+        caption: "School renovation project in Kampala",
         altText: "Volunteers renovating a local school"
       },
       {
-        imageUrl: "/images/gallery/image2.jpg",
-        caption: "Medical outreach program",
+        id: "gal2",
+        type: "image",
+        url: "https://images.unsplash.com/photo-1593113630400-ea4288922497?q=80&w=2070&auto=format&fit=crop",
+        caption: "Medical outreach program in rural Uganda",
         altText: "Medical professionals providing healthcare to community members"
       },
       {
-        imageUrl: "/images/gallery/image3.jpg",
+        id: "gal3",
+        type: "video",
+        url: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
+        youtubeId: "jfKfPfyJRdk",
+        thumbnail: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070&auto=format&fit=crop",
+        caption: "Interview with community leaders",
+        altText: "Community leaders discussing the impact of our programs"
+      },
+      {
+        id: "gal4",
+        type: "image",
+        url: "https://images.unsplash.com/photo-1452960962994-acf4fd70b632?q=80&w=2070&auto=format&fit=crop",
         caption: "Children's education initiative",
         altText: "Children learning in a classroom"
       },
       {
-        imageUrl: "/images/gallery/image4.jpg",
+        id: "gal5",
+        type: "video",
+        url: "https://www.youtube.com/watch?v=gXsf-nloGVM",
+        youtubeId: "gXsf-nloGVM",
+        thumbnail: "https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?q=80&w=800&auto=format&fit=crop",
+        caption: "Empowering disabled youth program",
+        altText: "Workshop for disabled youth"
+      },
+      {
+        id: "gal6",
+        type: "image",
+        url: "https://images.unsplash.com/photo-1524069290683-90db27f83ea3?q=80&w=800&auto=format&fit=crop",
         caption: "Elderly support program",
         altText: "Volunteers helping elderly community members"
       }
