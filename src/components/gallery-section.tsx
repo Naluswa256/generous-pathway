@@ -37,9 +37,12 @@ export function GallerySection() {
   // YouTube video ID extractor
   const getYoutubeId = (url: string): string => {
     if (!url) return "";
-    // Return existing youtubeId if it exists
-    const item = galleryItems.find(item => item.url === url);
-    if (item?.youtubeId) return item.youtubeId;
+    
+    // Extract from URL if not provided
+    const videoItem = galleryItems.find(item => item.url === url && item.type === "video");
+    if (videoItem && 'youtubeId' in videoItem && videoItem.youtubeId) {
+      return videoItem.youtubeId;
+    }
     
     // Extract from URL if not provided
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -128,7 +131,7 @@ export function GallerySection() {
                 <Dialog key={video.id}>
                   <DialogTrigger asChild>
                     <div className="aspect-video bg-muted rounded-xl border hover:border-charity-blue transition-all duration-300 hover:shadow-md group relative cursor-pointer overflow-hidden">
-                      {video.thumbnail ? (
+                      {'thumbnail' in video && video.thumbnail ? (
                         <>
                           <img 
                             src={video.thumbnail} 
