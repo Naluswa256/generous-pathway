@@ -117,10 +117,14 @@ export interface DonateSection {
 }
 
 export interface Testimonial {
-  quote: string;
+  id: string;
+  type: 'text' | 'video';
+  quote?: string;
   author: string;
   position?: string;
   imageUrl?: string;
+  videoUrl?: string;
+  youtubeId?: string;
 }
 
 export interface TestimonialSection {
@@ -381,22 +385,29 @@ const mockHomeData: HomePageData = {
     subtitle: "Testimonials from our community",
     testimonials: [
       {
+        id: "t1",
+        type: "text",
         quote: "SIC has transformed our village with their support and resources.",
         author: "Namono Grace",
         position: "Community Leader",
-        imageUrl: "/images/testimonials/grace.jpg"
+        imageUrl: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=150&auto=format&fit=crop"
       },
       {
-        quote: "The educational support provided by SIC has given my children hope for a better future.",
+        id: "t2",
+        type: "video",
         author: "Joseph Okello",
         position: "Parent",
-        imageUrl: "/images/testimonials/joseph.jpg"
+        imageUrl: "https://images.unsplash.com/photo-1577877777751-3f1ec20a0715?q=80&w=150&auto=format&fit=crop",
+        videoUrl: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
+        youtubeId: "jfKfPfyJRdk"
       },
       {
+        id: "t3",
+        type: "text",
         quote: "I've volunteered with SIC for three years, and the impact they make is truly remarkable.",
         author: "Lisa Thompson",
         position: "Volunteer",
-        imageUrl: "/images/testimonials/lisa.jpg"
+        imageUrl: "https://images.unsplash.com/photo-1573496800440-e3b90929d523?q=80&w=150&auto=format&fit=crop"
       }
     ]
   },
