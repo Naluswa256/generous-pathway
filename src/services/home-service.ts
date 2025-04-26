@@ -167,10 +167,10 @@ const MOCK_API_ENDPOINT = '/api/home';
 const mockHomeData: HomePageData = {
   hero: {
     title: "Empowering the Forgotten, One Life at a Time",
-    subtitle: "We're dedicated to supporting orphans, disabled individuals, and elderly grandparents in Uganda through community-driven initiatives and compassionate care.",
+    subtitle: "We're beginning our journey to support orphans in Uganda through community-driven initiatives and compassionate care.",
     imageUrl: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop",
     primaryButton: {
-      text: "Make a Difference Today",
+      text: "Support Our Mission",
       link: "/donate"
     },
     secondaryButton: {
@@ -193,24 +193,12 @@ const mockHomeData: HomePageData = {
       description: "Discover how you can contribute",
       icon: "users",
       link: "/contact"
-    },
-    {
-      title: "Upcoming Events",
-      description: "Join our community activities",
-      icon: "calendar",
-      link: "/events"
-    },
-    {
-      title: "Success Stories",
-      description: "See the impact of our work",
-      icon: "star",
-      link: "/blog"
     }
   ],
   about: {
     title: "About SIC",
     subtitle: "Sharing is Caring",
-    content: "SIC is a community-driven organization founded on the principle that sharing resources and compassion can transform lives. We work directly with communities in Uganda to provide essential support to orphans, disabled individuals, and elderly grandparents who lack adequate care and resources.",
+    content: "SIC is a newly established community-driven organization founded on the principle that sharing resources and compassion can transform lives. We are starting our journey in Uganda to provide essential support to orphaned children who lack adequate care and resources.",
     image: "/images/about-sic.jpg",
     buttonText: "Learn More About Us",
     buttonLink: "/about"
@@ -223,203 +211,81 @@ const mockHomeData: HomePageData = {
         title: "Support Orphans",
         description: "Providing education, healthcare, and emotional support to orphaned children.",
         icon: "book"
-      },
-      {
-        title: "Assist Disabled",
-        description: "Creating accessible opportunities and resources for disabled individuals.",
-        icon: "accessibility"
-      },
-      {
-        title: "Care for Elderly",
-        description: "Ensuring elderly grandparents receive proper care and companionship.",
-        icon: "home"
       }
     ]
   },
   impact: {
-    title: "Our Impact",
-    subtitle: "Making a difference together",
+    title: "Our Initial Impact",
+    subtitle: "Taking our first steps together",
     stats: [
       {
-        value: "500+",
+        value: "20",
         label: "Children Supported",
         icon: "child"
       },
       {
-        value: "100+",
-        label: "Elderly Assisted",
-        icon: "user"
-      },
-      {
-        value: "50+",
-        label: "Community Projects",
+        value: "1",
+        label: "Community Project",
         icon: "briefcase"
-      },
-      {
-        value: "25+",
-        label: "Local Partners",
-        icon: "handshake"
       }
     ],
-    content: "Through our dedicated efforts and the generous support of our donors, we've been able to create lasting change in communities across Uganda.",
+    content: "We are at the beginning of our journey, starting with supporting 20 orphaned children in our community.",
     imageUrl: "/images/impact.jpg"
   },
   gallery: {
-    title: "See Our Work",
-    subtitle: "Images and videos showcasing our impact",
+    title: "Our Beginning",
+    subtitle: "First steps in our journey",
     items: [
       {
         id: "gal1",
         type: "image",
         url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop",
-        caption: "School renovation project in Kampala",
-        altText: "Volunteers renovating a local school"
-      },
-      {
-        id: "gal2",
-        type: "image",
-        url: "https://images.unsplash.com/photo-1593113630400-ea4288922497?q=80&w=2070&auto=format&fit=crop",
-        caption: "Medical outreach program in rural Uganda",
-        altText: "Medical professionals providing healthcare to community members"
-      },
-      {
-        id: "gal3",
-        type: "video",
-        url: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
-        youtubeId: "jfKfPfyJRdk",
-        thumbnail: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070&auto=format&fit=crop",
-        caption: "Interview with community leaders",
-        altText: "Community leaders discussing the impact of our programs"
-      },
-      {
-        id: "gal4",
-        type: "image",
-        url: "https://images.unsplash.com/photo-1452960962994-acf4fd70b632?q=80&w=2070&auto=format&fit=crop",
-        caption: "Children's education initiative",
-        altText: "Children learning in a classroom"
-      },
-      {
-        id: "gal5",
-        type: "video",
-        url: "https://www.youtube.com/watch?v=gXsf-nloGVM",
-        youtubeId: "gXsf-nloGVM",
-        thumbnail: "https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?q=80&w=800&auto=format&fit=crop",
-        caption: "Empowering disabled youth program",
-        altText: "Workshop for disabled youth"
-      },
-      {
-        id: "gal6",
-        type: "image",
-        url: "https://images.unsplash.com/photo-1524069290683-90db27f83ea3?q=80&w=800&auto=format&fit=crop",
-        caption: "Elderly support program",
-        altText: "Volunteers helping elderly community members"
+        caption: "Our first community meeting",
+        altText: "Community members gathering to discuss our mission"
       }
     ]
   },
   news: {
     title: "Latest News",
     subtitle: "Stay updated on our activities",
-    items: [
-      {
-        id: "1",
-        title: "New School Building Complete",
-        excerpt: "After 6 months of construction, our new school building is ready to welcome students.",
-        date: "2023-04-15",
-        imageUrl: "/images/news/school-building.jpg",
-        slug: "new-school-building-complete"
-      },
-      {
-        id: "2",
-        title: "Annual Fundraising Gala",
-        excerpt: "Join us for our annual fundraising gala to support our ongoing projects.",
-        date: "2023-05-20",
-        imageUrl: "/images/news/fundraising-gala.jpg",
-        slug: "annual-fundraising-gala"
-      },
-      {
-        id: "3",
-        title: "Medical Outreach Success",
-        excerpt: "Our recent medical outreach program provided healthcare to over 500 community members.",
-        date: "2023-06-10",
-        imageUrl: "/images/news/medical-outreach.jpg",
-        slug: "medical-outreach-success"
-      }
-    ],
-    buttonText: "View All News",
+    items: [],
+    buttonText: "Check Back Soon",
     buttonLink: "/news"
   },
   trustees: {
     title: "Our Leadership",
-    subtitle: "Meet the dedicated team behind SIC",
+    subtitle: "Meet the founder of SIC",
     trustees: [
       {
-        name: "Sarah Johnson",
-        position: "Executive Director",
-        bio: "Sarah has over 15 years of experience in nonprofit management and community development.",
-        imageUrl: "/images/trustees/sarah.jpg"
-      },
-      {
-        name: "Robert Mukasa",
-        position: "Uganda Operations Director",
-        bio: "Robert oversees all our operations in Uganda and has been with us since our founding.",
-        imageUrl: "/images/trustees/robert.jpg"
-      },
-      {
-        name: "Emily Chen",
-        position: "Fundraising Director",
-        bio: "Emily specializes in nonprofit fundraising and has helped increase our donations by 200%.",
-        imageUrl: "/images/trustees/emily.jpg"
+        name: "John Mukasa",
+        position: "Founder & Director",
+        bio: "John founded SIC in 2024 with a vision to support orphaned children in his community. Having witnessed the struggles of vulnerable children firsthand, he is dedicated to creating positive change in their lives.",
+        imageUrl: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=2021&auto=format&fit=crop"
       }
     ]
   },
   donate: {
     title: "Support Our Cause",
-    subtitle: "Your donation makes a difference",
-    content: "Every contribution, no matter the size, helps us continue our mission of supporting those in need.",
+    subtitle: "Help us make a difference",
+    content: "Your contribution will help us expand our support to more orphaned children in need.",
     buttonText: "Donate Now",
     buttonLink: "/donate",
     backgroundImage: "/images/donate-bg.jpg"
   },
   testimonials: {
     title: "What People Say",
-    subtitle: "Testimonials from our community",
-    testimonials: [
-      {
-        id: "t1",
-        type: "text",
-        quote: "SIC has transformed our village with their support and resources.",
-        author: "Namono Grace",
-        position: "Community Leader",
-        imageUrl: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=150&auto=format&fit=crop"
-      },
-      {
-        id: "t2",
-        type: "video",
-        author: "Joseph Okello",
-        position: "Parent",
-        imageUrl: "https://images.unsplash.com/photo-1577877777751-3f1ec20a0715?q=80&w=150&auto=format&fit=crop",
-        videoUrl: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
-        youtubeId: "jfKfPfyJRdk"
-      },
-      {
-        id: "t3",
-        type: "text",
-        quote: "I've volunteered with SIC for three years, and the impact they make is truly remarkable.",
-        author: "Lisa Thompson",
-        position: "Volunteer",
-        imageUrl: "https://images.unsplash.com/photo-1573496800440-e3b90929d523?q=80&w=150&auto=format&fit=crop"
-      }
-    ]
+    subtitle: "Stories from our community coming soon",
+    testimonials: []
   },
   callToAction: {
-    title: "Make a Difference Today",
-    subtitle: "Your support can transform lives in Uganda. Join us in our mission to empower the forgotten and create a better world for everyone.",
+    title: "Join Us in Making a Difference",
+    subtitle: "Be part of our journey from the beginning. Together, we can create a better future for orphaned children in Uganda.",
     primaryButton: {
-      text: "Donate Now",
+      text: "Support Our Mission",
       link: "/donate"
     },
     secondaryButton: {
-      text: "Become a Volunteer",
+      text: "Get Involved",
       link: "/contact"
     }
   }
