@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
@@ -17,7 +18,7 @@ interface Event {
   image: string;
 }
 
-// In a real application, this data would come from an API or database
+// Empty events data as we're just starting
 const EVENT_DATA: Event[] = [];
 
 export function EventList() {
