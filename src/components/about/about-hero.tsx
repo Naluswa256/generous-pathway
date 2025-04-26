@@ -1,4 +1,3 @@
-
 import { SectionTitle } from "@/components/ui/section-title";
 
 export function AboutHero() {
@@ -8,7 +7,7 @@ export function AboutHero() {
         <div className="max-w-4xl mx-auto text-center">
           <SectionTitle 
             title="About Sharing is Caring" 
-            subtitle="Empowering communities and transforming lives through compassion and sustainable initiatives"
+            subtitle="Beginning our journey to transform lives through compassion and sustainable initiatives"
             highlightText
             centered
             animate
@@ -16,24 +15,23 @@ export function AboutHero() {
           />
           
           <p className="text-lg mb-6 leading-relaxed animate-fade-in delay-300">
-            At SIC, we believe in the power of community and shared responsibility. 
-            Our organization was founded on the principle that by working together and 
-            sharing our resources, knowledge, and compassion, we can create lasting change 
-            in the lives of those who need it most.
+            At SIC, we've just begun our mission to create positive change in our community. 
+            Founded in 2024, we're taking our first steps towards supporting those who need it most, 
+            starting with orphaned children in our local community.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-              <div className="text-charity-blue text-4xl font-bold mb-2">15+</div>
-              <div className="text-gray-600">Years of Service</div>
+              <div className="text-charity-blue text-4xl font-bold mb-2">1</div>
+              <div className="text-gray-600">Month of Service</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-              <div className="text-charity-blue text-4xl font-bold mb-2">10,000+</div>
-              <div className="text-gray-600">Lives Impacted</div>
+              <div className="text-charity-blue text-4xl font-bold mb-2">20</div>
+              <div className="text-gray-600">Children To Support</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-              <div className="text-charity-blue text-4xl font-bold mb-2">24</div>
-              <div className="text-gray-600">Community Projects</div>
+              <div className="text-charity-blue text-4xl font-bold mb-2">1</div>
+              <div className="text-gray-600">Community Project</div>
             </div>
           </div>
         </div>
