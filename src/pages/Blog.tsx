@@ -1,51 +1,18 @@
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { BlogCard } from "@/components/blog/blog-card";
-import { blogPosts } from "@/data/blog-data";
+import { SearchIcon, Filter } from "lucide-react";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
-import { CTAButton } from "@/components/ui/cta-button";
-import { SearchIcon, Clock, Filter } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Blog = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  
-  // Get unique categories
-  const categories = useMemo(() => {
-    return Array.from(new Set(blogPosts.map(post => post.category)));
-  }, []);
-  
-  // Filter blog posts based on search and category
-  const filteredPosts = useMemo(() => {
-    return blogPosts.filter(post => {
-      const matchesSearch = 
-        searchQuery === "" || 
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-        
-      const matchesCategory = 
-        !selectedCategory || 
-        post.category === selectedCategory;
-        
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchQuery, selectedCategory]);
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // The search is already reactive due to the useMemo above
-  };
-  
-  const clearFilters = () => {
-    setSearchQuery("");
-    setSelectedCategory(null);
   };
   
   return (
@@ -82,78 +49,19 @@ const Blog = () => {
                 <Filter className="w-4 h-4 mr-1 text-muted-foreground" />
                 <span className="text-sm">Filter by:</span>
               </div>
-              
-              <Button 
-                onClick={() => setSelectedCategory(null)} 
-                variant={!selectedCategory ? "default" : "outline"}
-                size="sm"
-                className={!selectedCategory ? "bg-charity-blue hover:bg-blue-600" : ""}
-              >
-                All
-              </Button>
-              
-              {categories.map(category => (
-                <Button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  size="sm"
-                  className={selectedCategory === category ? "bg-charity-blue hover:bg-blue-600" : ""}
-                >
-                  {category}
-                </Button>
-              ))}
-              
-              {(searchQuery || selectedCategory) && (
-                <Button 
-                  onClick={clearFilters} 
-                  variant="ghost" 
-                  size="sm"
-                  className="ml-auto text-muted-foreground"
-                >
-                  Clear filters
-                </Button>
-              )}
             </div>
           </div>
           
-          {/* Featured post (if available) */}
-          {filteredPosts.length > 0 && (
-            <div className="mb-12">
-              <BlogCard post={filteredPosts[0]} featured={true} />
-            </div>
-          )}
-          
-          {/* Blog grid */}
-          {filteredPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {filteredPosts.slice(1).map(post => (
-                <BlogCard key={post.id} post={post} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16 text-muted-foreground">
-              <p className="mb-2">No articles found for your search query.</p>
-              <p>Try using different keywords or clearing your filters.</p>
-            </div>
-          )}
-          
-          {/* CTA Section */}
-          <div className="bg-charity-blue text-white rounded-lg p-8 shadow-lg mt-12">
-            <div className="max-w-3xl mx-auto text-center">
-              <h3 className="text-2xl font-bold mb-4">Support Our Mission</h3>
-              <p className="text-white/90 mb-6">
-                Your donation helps us continue our work with orphans, disabled individuals, 
-                and elderly grandparents in Uganda. Every contribution makes a difference.
-              </p>
-              <CTAButton 
-                className="bg-white text-charity-blue hover:bg-gray-100 transition-all duration-300 hover:scale-105"
-                size="lg"
-                onClick={() => window.location.href = "/donate"}
-              >
-                Donate Now
-              </CTAButton>
-            </div>
+          {/* No Blog Posts Section */}
+          <div className="text-center py-16">
+            <h3 className="text-2xl font-semibold mb-4">No Blog Posts Yet</h3>
+            <p className="text-muted-foreground mb-6">
+              We are just getting started and will be sharing our stories and insights soon. 
+              Check back regularly for updates from Sharing is Caring.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Our first blog posts will provide deeper insights into our mission and impact.
+            </p>
           </div>
         </div>
       </main>
@@ -165,3 +73,4 @@ const Blog = () => {
 };
 
 export default Blog;
+
