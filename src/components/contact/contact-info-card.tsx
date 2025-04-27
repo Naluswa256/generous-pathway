@@ -36,9 +36,9 @@ export function ContactInfoCard() {
             title="Our Location"
             details={
               <address className="not-italic">
-                123 Charity Lane<br />
-                New York, NY 10001<br />
-                United States
+                Entebbe<br />
+                Abaita Ababiri<br />
+                Uganda
               </address>
             }
           />
@@ -49,7 +49,7 @@ export function ContactInfoCard() {
             details={
               <div>
                 <a href="tel:+1-123-456-7890" className="hover:text-charity-blue">
-                  +1 (123) 456-7890
+                (256) 123-4567
                 </a>
                 <p className="text-sm">Toll-free: 1-800-SIC-HELP</p>
               </div>

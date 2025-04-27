@@ -86,9 +86,9 @@ export function Navbar() {
           </Link>
           <nav className="hidden md:flex items-center space-x-1">
             {navLinks.map(link => (
-              <NavLink 
-                key={link.path} 
-                href={link.path} 
+              <NavLink
+                key={link.path}
+                href={link.path}
                 active={isActive(link.path)}
               >
                 {link.label}
@@ -97,11 +97,38 @@ export function Navbar() {
           </nav>
         </div>
 
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
           <CTAButton asChild>
             <Link to="/donate">Donate Now</Link>
           </CTAButton>
+        </div> */}
+
+        <div className="hidden md:block">
+          <a
+            href="https://donorbox.org/sharing-is-caring-7?"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="dbox-donation-page-button"
+            style={{
+              background: 'rgb(52, 152, 219)',
+              color: 'rgb(255, 255, 255)',
+              textDecoration: 'none',
+              fontFamily: 'Verdana, sans-serif',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              width: 'fit-content',
+              fontSize: '16px',
+              borderRadius: '5px',
+              lineHeight: '24px',
+              padding: '8px 24px',
+            }}
+          >
+            <img src="https://donorbox.org/images/white_logo.svg" alt="Donorbox Logo" />
+            Donate
+          </a>
         </div>
+
 
         <Button
           variant="ghost"
@@ -118,9 +145,9 @@ export function Navbar() {
         <div className="md:hidden bg-white border-t border-border animate-fade-in">
           <div className="container mx-auto py-4 flex flex-col space-y-3">
             {navLinks.map(link => (
-              <NavLink 
-                key={link.path} 
-                href={link.path} 
+              <NavLink
+                key={link.path}
+                href={link.path}
                 active={isActive(link.path)}
                 onClick={closeMenu}
               >

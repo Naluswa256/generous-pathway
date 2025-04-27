@@ -12,11 +12,11 @@ interface Trustee {
 
 const trustees: Trustee[] = [
   {
-    id: "john-mukasa",
-    name: "John Mukasa",
+    id: "Nabulime Sandra",
+    name: "Nabulime Sandra",
     position: "Founder & President",
-    story: "John founded SIC in 2024 with a vision to support orphaned children in his community. Having witnessed the struggles of vulnerable children firsthand, he is dedicated to creating positive change in their lives.",
-    image: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?q=80&w=2021&auto=format&fit=crop"
+    story: "Sandra founded SIC in 2024 with a vision to support orphaned children in her community. Having witnessed the struggles of vulnerable children firsthand, she is dedicated to creating positive change in their lives.",
+    image: "https://i.imgur.com/MxqOAxA.jpeg"
   }
 ];
 
