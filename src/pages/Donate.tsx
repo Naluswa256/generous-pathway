@@ -72,7 +72,8 @@ const Donate = () => {
         <DonationImpactCounter />
         
         {/* Impact Stories */}
-        <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+        {/* Commented out as per user request */}
+        {/* <section className="py-16 bg-gradient-to-b from-white to-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">Our Vision for Change</h2>
             <p className="text-xl text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
@@ -81,10 +82,21 @@ const Donate = () => {
             
             <ImpactStories />
           </div>
-        </section>
+        </section> */}
         
         {/* Impact Gallery - Photos and Videos */}
-        <DonationImpactGallery />
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">Our Impact Gallery</h2>
+            <p className="text-xl text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+              We are currently in the early stages of our mission. Stay tuned for updates on our projects and impact.
+            </p>
+            
+            <div className="text-center text-muted-foreground">
+              No gallery items have been uploaded yet. We will share our journey with you soon!
+            </div>
+          </div>
+        </section>
         
         {/* Donation Usage Chart */}
         <section className="py-16 bg-white">
