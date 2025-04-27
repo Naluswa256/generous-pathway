@@ -2,7 +2,7 @@
 import React from "react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { PaymentOptionsList } from "@/components/donate/payment-options-list";
-import { DonationForm } from "@/components/donate/donation-form";
+import { DonorboxButton } from "@/components/ui/donorbox-button";
 
 export function DonateSection() {
   return (
@@ -15,8 +15,11 @@ export function DonateSection() {
           animate={true}
         />
         
+        <div className="flex justify-center mb-8">
+          <DonorboxButton />
+        </div>
+        
         <PaymentOptionsList />
-        <DonationForm />
       </div>
     </section>
   );

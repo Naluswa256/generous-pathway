@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -45,7 +44,6 @@ export function Navbar() {
     return location.pathname === path;
   };
 
-  // Add scroll effect for better UI
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -61,7 +59,6 @@ export function Navbar() {
     };
   }, []);
 
-  // Updated navigation links with shorter labels where possible
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
@@ -97,38 +94,9 @@ export function Navbar() {
           </nav>
         </div>
 
-        {/* <div className="hidden md:block">
-          <CTAButton asChild>
-            <Link to="/donate">Donate Now</Link>
-          </CTAButton>
-        </div> */}
-
         <div className="hidden md:block">
-          <a
-            href="https://donorbox.org/sharing-is-caring-7?"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="dbox-donation-page-button"
-            style={{
-              background: 'rgb(52, 152, 219)',
-              color: 'rgb(255, 255, 255)',
-              textDecoration: 'none',
-              fontFamily: 'Verdana, sans-serif',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              width: 'fit-content',
-              fontSize: '16px',
-              borderRadius: '5px',
-              lineHeight: '24px',
-              padding: '8px 24px',
-            }}
-          >
-            <img src="https://donorbox.org/images/white_logo.svg" alt="Donorbox Logo" />
-            Donate
-          </a>
+          <DonorboxButton />
         </div>
-
 
         <Button
           variant="ghost"
@@ -140,7 +108,6 @@ export function Navbar() {
         </Button>
       </div>
 
-      {/* Mobile menu with animation */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-border animate-fade-in">
           <div className="container mx-auto py-4 flex flex-col space-y-3">
@@ -155,9 +122,7 @@ export function Navbar() {
               </NavLink>
             ))}
             <div className="pt-2">
-              <CTAButton className="w-full justify-center" asChild>
-                <Link to="/donate" onClick={closeMenu}>Donate Now</Link>
-              </CTAButton>
+              <DonorboxButton className="w-full" />
             </div>
           </div>
         </div>
