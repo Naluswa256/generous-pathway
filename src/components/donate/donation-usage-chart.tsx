@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { FeatureCard } from '@/components/ui/feature-card';
@@ -15,38 +14,38 @@ interface DonationUseData {
 const donationUseData: DonationUseData[] = [
   { 
     name: 'Orphan Support',
-    value: 35, 
+    value: 40, 
     color: '#3b82f6', 
     icon: Heart,
-    description: 'Provides education, healthcare, and daily necessities for orphaned children.'
+    description: 'Will provide education, healthcare, and daily necessities for orphaned children.'
   },
   { 
     name: 'Disabled Support',
     value: 25, 
     color: '#10b981', 
     icon: HelpingHand,
-    description: 'Funds adaptive equipment, therapy, and vocational training for disabled individuals.'
+    description: 'Will fund adaptive equipment, therapy, and vocational training for disabled individuals.'
   },
   { 
     name: 'Elderly Support',
     value: 20, 
     color: '#f59e0b', 
     icon: Home,
-    description: 'Covers healthcare, food, and home repairs for elderly grandparents.'
+    description: 'Will cover healthcare, food, and home repairs for elderly grandparents.'
   },
   { 
     name: 'Education',
-    value: 15, 
+    value: 10, 
     color: '#6366f1', 
     icon: GraduationCap,
-    description: 'Builds schools, trains teachers, and provides learning materials.' 
+    description: 'Will build schools, train teachers, and provide learning materials.' 
   },
   { 
     name: 'Admin & Operations',
     value: 5, 
     color: '#64748b', 
     icon: Activity,
-    description: 'Covers essential administrative costs to ensure efficient program delivery.'
+    description: 'Will cover essential administrative costs to ensure efficient program delivery.'
   }
 ];
 

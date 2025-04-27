@@ -35,8 +35,8 @@ const Donate = () => {
           
           <div className="container mx-auto px-4 py-20 md:py-32 relative z-20">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">Your Donation Creates Real Change</h1>
-              <p className="text-xl md:text-2xl mb-8 animate-fade-in">See how your generosity transforms lives across Uganda</p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">Be Part of Our Beginning</h1>
+              <p className="text-xl md:text-2xl mb-8 animate-fade-in">Join us in taking the first steps towards transforming lives in Uganda</p>
               
               <div className="mt-10 animate-fade-in">
                 <CTAButton 
@@ -55,7 +55,7 @@ const Donate = () => {
                   className="text-white/80 hover:text-white flex flex-col items-center transition-colors"
                   aria-label="Scroll to see impact"
                 >
-                  <span className="mb-2">See Your Impact</span>
+                  <span className="mb-2">See Our Vision</span>
                   <ChevronDown className="w-6 h-6" />
                 </button>
               </div>
@@ -74,9 +74,9 @@ const Donate = () => {
         {/* Impact Stories */}
         <section className="py-16 bg-gradient-to-b from-white to-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">Stories of Change</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">Our Vision for Change</h2>
             <p className="text-xl text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-              Real stories from people whose lives have been transformed through your generosity
+              See how your support will help transform lives in our community
             </p>
             
             <ImpactStories />
@@ -89,9 +89,9 @@ const Donate = () => {
         {/* Donation Usage Chart */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">Where Your Donation Goes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">How We Will Use Your Donation</h2>
             <p className="text-xl text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-              We believe in full transparency. Here's how we allocate donations to create lasting change.
+              We are committed to transparent and effective use of your generous contributions.
             </p>
             
             <DonationUsageChart />
@@ -102,7 +102,7 @@ const Donate = () => {
                 showIcon={false}
                 onClick={scrollToPayment}
               >
-                See Our Full Financial Reports
+                Make Your Impact Today
               </CTAButton>
             </div>
           </div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 interface ImpactMetric {
@@ -13,35 +12,35 @@ interface ImpactMetric {
 const impactMetrics: ImpactMetric[] = [
   {
     label: "Lives Impacted",
-    value: 15000,
+    value: 20,
     prefix: "",
     suffix: "+",
-    increment: 50,
-    duration: 3000
+    increment: 1,
+    duration: 2000
   },
   {
     label: "Donations Received",
-    value: 450000,
+    value: 0,
     prefix: "$",
     suffix: "",
-    increment: 1000,
-    duration: 3000
+    increment: 1,
+    duration: 2000
   },
   {
     label: "Communities Served",
-    value: 28,
+    value: 1,
     prefix: "",
     suffix: "",
     increment: 1,
-    duration: 3000
+    duration: 2000
   },
   {
     label: "Clean Water Wells",
-    value: 42,
+    value: 0,
     prefix: "",
     suffix: "",
     increment: 1,
-    duration: 3000
+    duration: 2000
   }
 ];
 
