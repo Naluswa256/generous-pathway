@@ -45,22 +45,22 @@ export function AboutSICSection() {
           
           <div className="grid grid-cols-2 gap-4">
             <img 
-              src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1695131494906-91f5433f1804?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               alt="Uganda orphans" 
               className="rounded-lg shadow-md w-full h-40 md:h-48 object-cover"
             />
             <img 
-              src="https://images.unsplash.com/photo-1593113630400-ea4288922497?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1611183110451-7e156d15581d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               alt="Disabled children" 
               className="rounded-lg shadow-md w-full h-40 md:h-48 object-cover"
             />
             <img 
-              src="https://images.unsplash.com/photo-1452960962994-acf4fd70b632?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1617465750457-414c26139d16?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               alt="Elderly care" 
               className="rounded-lg shadow-md w-full h-40 md:h-48 object-cover"
             />
             <img 
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1717609208395-e94cbea70fc2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               alt="Community support" 
               className="rounded-lg shadow-md w-full h-40 md:h-48 object-cover"
             />
